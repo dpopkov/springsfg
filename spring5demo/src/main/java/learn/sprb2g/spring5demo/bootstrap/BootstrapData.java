@@ -2,20 +2,26 @@ package learn.sprb2g.spring5demo.bootstrap;
 
 import learn.sprb2g.spring5demo.model.Author;
 import learn.sprb2g.spring5demo.model.Book;
+import learn.sprb2g.spring5demo.model.Publisher;
 import learn.sprb2g.spring5demo.repositories.AuthorRepository;
 import learn.sprb2g.spring5demo.repositories.BookRepository;
+import learn.sprb2g.spring5demo.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+@SuppressWarnings("SpellCheckingInspection")
 @Component
 public class BootstrapData implements CommandLineRunner {
 
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootstrapData(BookRepository bookRepository, AuthorRepository authorRepository) {
+    public BootstrapData(BookRepository bookRepository, AuthorRepository authorRepository,
+                         PublisherRepository publisherRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     /**
@@ -45,11 +51,20 @@ public class BootstrapData implements CommandLineRunner {
         Book effective = new Book("Effective Java", "3456789");
         Book concurrency = new Book("Java Concurrency in Practice", "5889191");
 
+        Publisher pHall = new Publisher("Prentice Hall", "New Jersey", "state", "1234567");
+        Publisher aWesley = new Publisher("Addison-Wesley", "Big Wesley", "addison", "2345678");
+        publisherRepository.save(pHall);
+        publisherRepository.save(aWesley);
+
         core.getAuthors().add(horstmann);
         horstmann.getBooks().add(core);
+        core.setPublisher(pHall);
+        pHall.getBooks().add(core);
 
         effective.getAuthors().add(bloch);
         bloch.getBooks().add(effective);
+        effective.setPublisher(aWesley);
+        aWesley.getBooks().add(effective);
 
         concurrency.getAuthors().add(goetz);
         goetz.getBooks().add(concurrency);
@@ -63,10 +78,14 @@ public class BootstrapData implements CommandLineRunner {
         holmes.getBooks().add(concurrency);
         concurrency.getAuthors().add(lea);
         lea.getBooks().add(concurrency);
+        concurrency.setPublisher(aWesley);
+        aWesley.getBooks().add(concurrency);
 
         bookRepository.save(core);
         bookRepository.save(effective);
         bookRepository.save(concurrency);
+        publisherRepository.save(pHall);
+        publisherRepository.save(aWesley);
 
         System.out.println("Number of authors: " + authorRepository.count());
         System.out.println("Number of books: " + bookRepository.count());
