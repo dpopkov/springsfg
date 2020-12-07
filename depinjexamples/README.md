@@ -9,3 +9,4 @@
 * Spring Profiles.
 * Default Profile - when there is no active profiles.
 * Assignment: add pet controller, add two services, use profiles in `application.properties`.
+* Bean Lifecycle.
