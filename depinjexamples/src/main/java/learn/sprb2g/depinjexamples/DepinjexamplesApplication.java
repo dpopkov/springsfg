@@ -1,9 +1,6 @@
 package learn.sprb2g.depinjexamples;
 
-import learn.sprb2g.depinjexamples.controllers.ConstructorInjectedController;
-import learn.sprb2g.depinjexamples.controllers.MyController;
-import learn.sprb2g.depinjexamples.controllers.PropertyInjectedController;
-import learn.sprb2g.depinjexamples.controllers.SetterInjectedController;
+import learn.sprb2g.depinjexamples.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,10 @@ public class DepinjexamplesApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(DepinjexamplesApplication.class, args);
+
+        System.out.println("----------- I18n");
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
 
         System.out.println("----------- Primary");
         MyController myController = (MyController) ctx.getBean("myController");

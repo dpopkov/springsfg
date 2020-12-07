@@ -6,3 +6,4 @@
 * DI with Spring Examples: by property, setters and constructor.
 * Using Qualifiers.
 * Primary Beans.
+* Spring Profiles.
