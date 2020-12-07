@@ -7,3 +7,4 @@
 * Using Qualifiers.
 * Primary Beans.
 * Spring Profiles.
+* Default Profile - when there is no active profiles.
