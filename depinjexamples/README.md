@@ -3,3 +3,4 @@
 [Notes](notes.md)
 
 * DI w/o Spring Examples: by property, setters and constructor.
+* DI with Spring Examples: by property, setters and constructor.

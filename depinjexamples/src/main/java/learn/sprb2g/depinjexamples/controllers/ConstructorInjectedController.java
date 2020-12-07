@@ -1,7 +1,9 @@
 package learn.sprb2g.depinjexamples.controllers;
 
 import learn.sprb2g.depinjexamples.services.GreetingService;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class ConstructorInjectedController {
     private final GreetingService greetingService;
 
