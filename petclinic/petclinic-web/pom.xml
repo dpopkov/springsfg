@@ -3,7 +3,7 @@
     <parent>
         <artifactId>petclinic</artifactId>
         <groupId>learn.sprb2g</groupId>
-        <version>0.0.1</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +13,7 @@
         <dependency>
             <groupId>learn.sprb2g</groupId>
             <artifactId>petclinic-data</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
