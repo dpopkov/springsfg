@@ -13,6 +13,9 @@
 #### Issue 4: Upgrade to JUnit 5
 
 #### Issue 3: Add Maven Release Plugin
+* Add `maven-release-plugin` to pom.xml.
+* Override goal `install` in the plugin configuration.
+* Add `scm` with `developerConnection` to your repo.
 
 #### Issue 2: Implement Pet Clinic POJO Data Model - CLOSED
 
