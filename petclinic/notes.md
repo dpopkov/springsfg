@@ -8,6 +8,8 @@
 
 #### Issue 6: Implement Map Based Services
 
+#### Issue 10: Add ID to model objects - CLOSED
+
 #### Issue 5: Create Interfaces for Pet Clinic Services - CLOSED
 
 #### Issue 4: Upgrade to JUnit 5
