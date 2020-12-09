@@ -8,11 +8,11 @@
 
 #### Issue 6: Implement Map Based Services
 
-#### Issue 5: Create Interfaces for Pet Clinic Services
+#### Issue 5: Create Interfaces for Pet Clinic Services - CLOSED
 
 #### Issue 4: Upgrade to JUnit 5
 
-#### Issue 3: Add Maven Release Plugin
+#### Issue 3: Add Maven Release Plugin - CLOSED
 * Add `maven-release-plugin` to pom.xml.
 * Override goal `install` in the plugin configuration.
 * Add `scm` with `developerConnection` to your repo.
