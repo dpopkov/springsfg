@@ -5,5 +5,7 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 
 #### 2.1 - [DI Examples](depinjexamples)
 
+#### 2.2 - [Joke App](jokes)
+
 ### 1 - [Spring 5 Demo](spring5demo)
  Simple demo web application using in-memory database.
