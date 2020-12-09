@@ -52,18 +52,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--The execution section below should have been removed in the previous commit
-                    where the property spring-boot.repackage.skip was added. -->
-                <!--<executions>
+                <executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                        <configuration>
+                        <!--The execution section below should have been removed in the previous commit
+                            where the property spring-boot.repackage.skip was added. -->
+                        <!--<configuration>
                             <skip>true</skip>
-                        </configuration>
+                        </configuration>-->
                     </execution>
-                </executions>-->
+                </executions>
             </plugin>
         </plugins>
     </build>
