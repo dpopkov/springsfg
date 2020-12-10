@@ -2,11 +2,11 @@
 
 #### Issue 9: Add WebJars for Bootstrap CSS and JQuery
 
-#### Issue 8: Add Pet Clinic Index Page and Controller
-
 #### Issue 7: Create Pet Clinic Controllers
 
 #### Issue 12: Create Equals method on entity objects
+
+#### Issue 8: Add Pet Clinic Index Page and Controller - CLOSED
 
 #### Issue 6: Implement Map Based Services - CLOSED
 
