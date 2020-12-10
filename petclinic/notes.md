@@ -6,7 +6,9 @@
 
 #### Issue 7: Create Pet Clinic Controllers
 
-#### Issue 6: Implement Map Based Services
+#### Issue 12: Create Equals method on entity objects
+
+#### Issue 6: Implement Map Based Services - CLOSED
 
 #### Issue 11: Refactor Service Interfaces to Common Base Interface - CLOSED
 
