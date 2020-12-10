@@ -8,6 +8,8 @@
 
 #### Issue 6: Implement Map Based Services
 
+#### Issue 11: Refactor Service Interfaces to Common Base Interface - CLOSED
+
 #### Issue 10: Add ID to model objects - CLOSED
 
 #### Issue 5: Create Interfaces for Pet Clinic Services - CLOSED
