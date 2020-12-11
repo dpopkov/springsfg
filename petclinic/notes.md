@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 21: Create Owner Index page and controller - CLOSED
+
 #### Issue 7: Create Vet Index page and Controller - CLOSED
 
 #### Issue 8: Add Pet Clinic Index Page and Controller - CLOSED
