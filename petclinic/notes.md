@@ -2,9 +2,9 @@
 
 #### Issue 9: Add WebJars for Bootstrap CSS and JQuery
 
-#### Issue 7: Create Pet Clinic Controllers
-
 #### Issue 12: Create Equals method on entity objects
+
+#### Issue 7: Create Vet Index page and Controller - CLOSED
 
 #### Issue 8: Add Pet Clinic Index Page and Controller - CLOSED
 
