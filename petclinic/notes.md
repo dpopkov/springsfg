@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 13: Load Bootstrap Data on Startup - CLOSED
+
 #### Issue 21: Create Owner Index page and controller - CLOSED
 
 #### Issue 7: Create Vet Index page and Controller - CLOSED

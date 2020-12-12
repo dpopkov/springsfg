@@ -1,5 +1,6 @@
 package learn.sprb2g.petclinic.services.map;
 
+import learn.sprb2g.petclinic.model.BaseEntity;
 import learn.sprb2g.petclinic.services.CrudService;
 
 import java.util.HashMap;
@@ -7,9 +8,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class AbstractMapService<T, ID> implements CrudService<T, ID> {
+public abstract class AbstractMapService<T extends BaseEntity> implements CrudService<T, Long> {
 
-    protected final Map<ID, T> map = new HashMap<>();
+    protected final Map<Long, T> map = new HashMap<>();
 
     @Override
     public Set<T> findAll() {
@@ -17,14 +18,14 @@ public abstract class AbstractMapService<T, ID> implements CrudService<T, ID> {
     }
 
     @Override
-    public T findById(ID id) {
+    public T findById(Long id) {
         return map.get(id);
     }
 
     @Override
-    public T save(ID id, T object) {
-        map.put(id, object);
-        return object;
+    public T save(T entity) {
+        map.put(entity.getId(), entity);
+        return entity;
     }
 
     @Override
@@ -33,7 +34,7 @@ public abstract class AbstractMapService<T, ID> implements CrudService<T, ID> {
     }
 
     @Override
-    public void deleteById(ID id) {
+    public void deleteById(Long id) {
         map.remove(id);
     }
 }
