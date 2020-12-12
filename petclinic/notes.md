@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 15: List all Owners on Owners Index Page - CLOSED 
+
 #### Issue 22: Implement Spring Conf for Services - CLOSED
 
 #### Issue 13: Load Bootstrap Data on Startup - CLOSED
