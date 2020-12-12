@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 23: Update Map Impl to manage setting of ID Property - CLOSED
+
 #### Issue 14: List all Vets on Vet Index page - CLOSED
  
 #### Issue 15: List all Owners on Owners Index Page - CLOSED 

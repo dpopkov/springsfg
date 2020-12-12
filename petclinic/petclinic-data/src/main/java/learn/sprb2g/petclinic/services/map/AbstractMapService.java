@@ -3,10 +3,7 @@ package learn.sprb2g.petclinic.services.map;
 import learn.sprb2g.petclinic.model.BaseEntity;
 import learn.sprb2g.petclinic.services.CrudService;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractMapService<T extends BaseEntity> implements CrudService<T, Long> {
 
@@ -24,6 +21,12 @@ public abstract class AbstractMapService<T extends BaseEntity> implements CrudSe
 
     @Override
     public T save(T entity) {
+        if (entity == null) {
+            throw new IllegalArgumentException("Entity cannot be null");
+        }
+        if (entity.getId() == null) {
+            entity.setId(getNextId());
+        }
         map.put(entity.getId(), entity);
         return entity;
     }
@@ -36,5 +39,9 @@ public abstract class AbstractMapService<T extends BaseEntity> implements CrudSe
     @Override
     public void deleteById(Long id) {
         map.remove(id);
+    }
+
+    private Long getNextId() {
+        return map.isEmpty() ? 1L : Collections.max(map.keySet()) + 1;
     }
 }
