@@ -1,15 +1,24 @@
 package learn.sprb2g.depinjexamples.config;
 
 import learn.sprb2g.depinjexamples.examplebeans.FakeDataSource;
+import learn.sprb2g.depinjexamples.examplebeans.FakeJmsBroker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySource("classpath:datasource.properties")
+//@PropertySource({
+//        "classpath:datasource.properties",
+//        "classpath:jms.properties"
+//})
+@PropertySources({
+        @PropertySource("classpath:datasource.properties"),
+        @PropertySource("classpath:jms.properties")
+})
 public class PropertyConfig {
 
     /* Autowired in constructor. */
@@ -24,6 +33,15 @@ public class PropertyConfig {
     @Value("${learn.url}")
     String url;
 
+    @Value("${learn.jms.username}")
+    String jmsUsername;
+
+    @Value("${learn.jms.password}")
+    String jmsPassword;
+
+    @Value("${learn.jms.url}")
+    String jmsUrl;
+
     public PropertyConfig(Environment env) {
         this.env = env;
     }
@@ -35,6 +53,15 @@ public class PropertyConfig {
         ds.setPassword(password);
         ds.setUrl(url);
         return ds;
+    }
+
+    @Bean
+    public FakeJmsBroker fakeJmsBroker() {
+        FakeJmsBroker broker = new FakeJmsBroker();
+        broker.setUsername(jmsUsername);
+        broker.setPassword(jmsPassword);
+        broker.setUrl(jmsUrl);
+        return broker;
     }
 
     /*

@@ -2,6 +2,7 @@ package learn.sprb2g.depinjexamples;
 
 import learn.sprb2g.depinjexamples.controllers.*;
 import learn.sprb2g.depinjexamples.examplebeans.FakeDataSource;
+import learn.sprb2g.depinjexamples.examplebeans.FakeJmsBroker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -21,6 +22,11 @@ public class DepinjexamplesApplication {
         System.out.println("User: " + dataSource.getUser());
         System.out.println("Password: " + dataSource.getPassword());
         System.out.println("Url: " + dataSource.getUrl());
+
+        FakeJmsBroker jmsBroker = ctx.getBean(FakeJmsBroker.class);
+        System.out.println("JMS Username: " + jmsBroker.getUsername());
+        System.out.println("JMS Password: " + jmsBroker.getPassword());
+        System.out.println("JMS Url: " + jmsBroker.getUrl());
     }
 
     @SuppressWarnings("unused")
