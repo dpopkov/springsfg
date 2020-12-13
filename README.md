@@ -17,3 +17,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Dependency Injection with Spring
 * Building a Spring Boot Jokes App
 * Spring Framework Configuration
+* External Properties with Spring Framework

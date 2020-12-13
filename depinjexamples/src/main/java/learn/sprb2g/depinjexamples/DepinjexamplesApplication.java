@@ -1,6 +1,7 @@
 package learn.sprb2g.depinjexamples;
 
 import learn.sprb2g.depinjexamples.controllers.*;
+import learn.sprb2g.depinjexamples.examplebeans.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +10,21 @@ import org.springframework.context.ApplicationContext;
 public class DepinjexamplesApplication {
 
     public static void main(String[] args) {
+//        runDiExamples(args);
+
+        runExternalPropertiesExample(args);
+    }
+
+    private static void runExternalPropertiesExample(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(DepinjexamplesApplication.class, args);
+        FakeDataSource dataSource = ctx.getBean(FakeDataSource.class);
+        System.out.println("User: " + dataSource.getUser());
+        System.out.println("Password: " + dataSource.getPassword());
+        System.out.println("Url: " + dataSource.getUrl());
+    }
+
+    @SuppressWarnings("unused")
+    private static void runDiExamples(String[] args) {
         ApplicationContext ctx = SpringApplication.run(DepinjexamplesApplication.class, args);
 
         System.out.println("----------- Which Pet is the Best");
