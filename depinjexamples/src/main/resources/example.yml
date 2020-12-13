@@ -1,0 +1,40 @@
+# This is a comment
+# This file contains examples of YAML
+
+name: John
+
+names:  # Easy way to setup a list
+  - John
+  - Paul
+  - Ringo
+
+pound_sign: "#"
+
+# Complex objects
+book:
+  author: Joe Buck
+  publisher: Random House
+
+# Examples of Booleans
+truth: yes
+
+another_truth: True
+
+more_true: true
+
+false: no #No, false, FALSE
+
+# Examples of Strings
+string_val: "This is it's quote"
+
+colon_string: "my courses: one two three"
+
+# Examples of multiple line strings
+include_new_lines: |
+  asdf asdf asdf
+  asft affdd
+
+ignore_new_lines: >
+  this is
+  just one long
+  string

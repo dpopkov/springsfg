@@ -21,4 +21,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Spring Environment Properties may be used for overriding default properties
 * Multiple Property files
 * Spring Boot Application Properties
-
+* Spring Boot YAML properties
