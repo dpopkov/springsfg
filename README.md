@@ -18,3 +18,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Building a Spring Boot Jokes App
 * Spring Framework Configuration
 * External Properties with Spring Framework
+* Spring Environment Properties may be used for overriding default properties

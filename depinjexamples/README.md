@@ -11,3 +11,4 @@
 * Assignment: add pet controller, add two services, use profiles in `application.properties`.
 * Bean Lifecycle.
 * External Properties with Spring Framework
+* Spring Environment Properties may be used for overriding default properties.

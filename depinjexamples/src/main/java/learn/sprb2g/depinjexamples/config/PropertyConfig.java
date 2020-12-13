@@ -6,10 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
 
 @Configuration
 @PropertySource("classpath:datasource.properties")
 public class PropertyConfig {
+
+    /* Autowired in constructor. */
+    private final Environment env;
 
     @Value("${learn.username}")
     String user;
@@ -20,10 +24,14 @@ public class PropertyConfig {
     @Value("${learn.url}")
     String url;
 
+    public PropertyConfig(Environment env) {
+        this.env = env;
+    }
+
     @Bean
     public FakeDataSource fakeDataSource() {
         FakeDataSource ds = new FakeDataSource();
-        ds.setUser(user);
+        ds.setUser(env.getProperty("LEARN_SFG_USERNAME"));  // LEARN_SFG_USERNAME - name of the environment variable
         ds.setPassword(password);
         ds.setUrl(url);
         return ds;
