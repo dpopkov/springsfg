@@ -15,3 +15,4 @@
 * Multiple Property files.
 * Refactor multiple properties files to one Spring Boot Application Properties.
 * Spring Boot YAML properties.
+* Spring Boot Profile properties override base properties.

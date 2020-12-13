@@ -22,3 +22,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Multiple Property files
 * Spring Boot Application Properties
 * Spring Boot YAML properties
+* Spring Boot Profile properties
