@@ -13,3 +13,4 @@
 * External Properties with Spring Framework
 * Spring Environment Properties may be used for overriding default properties.
 * Multiple Property files.
+* Refactor multiple properties files to one Spring Boot Application Properties.

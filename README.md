@@ -20,3 +20,5 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * External Properties with Spring Framework
 * Spring Environment Properties may be used for overriding default properties
 * Multiple Property files
+* Spring Boot Application Properties
+
