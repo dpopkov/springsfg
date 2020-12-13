@@ -7,6 +7,8 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 
 #### 2.2 - [Joke App](jokes)
 
+#### 2.3 - [Recipe Project](recipe)
+
 ### 1 - [Spring 5 Demo](spring5demo)
  Simple demo web application using in-memory database.
 
@@ -23,3 +25,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Spring Boot Application Properties
 * Spring Boot YAML properties
 * Spring Boot Profile properties
+* Web Development with Spring MVC
