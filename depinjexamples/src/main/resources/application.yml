@@ -3,3 +3,10 @@ learn:
     username: JMS Username
     password: 1234-YAML-5678
     url: SomeURL
+
+---
+spring:
+  profiles: ES
+learn:
+  jms:
+    username: JMS Username (in Spanish)
