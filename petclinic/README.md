@@ -1,3 +1,3 @@
 # Pet Clinic
 
-[Notes](notes.md)
+[Notes and Issues](notes.md)

@@ -9,3 +9,11 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 
 ### 1 - [Spring 5 Demo](spring5demo)
  Simple demo web application using in-memory database.
+
+## Course contents:
+
+* Introduction to Spring Framework 5
+* Building a Spring Boot Web App
+* Dependency Injection with Spring
+* Building a Spring Boot Jokes App
+* Spring Framework Configuration
