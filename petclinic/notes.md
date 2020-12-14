@@ -4,6 +4,12 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 24: Implement WRO4J Maven Plugin and SPC resources - CLOSED
+
+#### Issue 17: Copy Master Template - CLOSED
+
+#### Issue 16: Copy all Static Resources - CLOSED
+
 #### Issue 23: Update Map Impl to manage setting of ID Property - CLOSED
 
 #### Issue 14: List all Vets on Vet Index page - CLOSED
