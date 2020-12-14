@@ -26,3 +26,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Spring Boot YAML properties
 * Spring Boot Profile properties
 * Web Development with Spring MVC
+* Spring Boot Development Tools
