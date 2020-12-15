@@ -1,8 +1,10 @@
 package learn.sprb2g.petclinic.bootstrap;
 
 import learn.sprb2g.petclinic.model.Owner;
+import learn.sprb2g.petclinic.model.PetType;
 import learn.sprb2g.petclinic.model.Vet;
 import learn.sprb2g.petclinic.services.OwnerService;
+import learn.sprb2g.petclinic.services.PetTypeService;
 import learn.sprb2g.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,10 +17,12 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     /**
@@ -26,6 +30,9 @@ public class DataLoader implements CommandLineRunner {
      */
     @Override
     public void run(String... args) {
+        PetType dogType = savePetType("Dog");
+        PetType catType = savePetType("Cat");
+
         saveOwner("Michael", "Weston");
         saveOwner("Fiona", "Glenanne");
         System.out.println("Loaded Owners...");
@@ -33,6 +40,12 @@ public class DataLoader implements CommandLineRunner {
         saveVet("Same", "Axe");
         saveVet("Jane", "Doe");
         System.out.println("Loaded Vets...");
+    }
+
+    private PetType savePetType(String name) {
+        PetType type = new PetType();
+        type.setName(name);
+        return petTypeService.save(type);
     }
 
     private void saveOwner(String firstName, String lastName) {

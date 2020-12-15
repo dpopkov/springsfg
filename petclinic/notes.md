@@ -1,8 +1,8 @@
 # Notes
 
-#### Issue 9: Add WebJars for Bootstrap CSS and JQuery
-
 #### Issue 12: Create Equals method on entity objects
+
+#### Issue 32: Add PetTypes in with Bootstrap (startup) - CLOSED
 
 #### Issue 29, 31: Create PetType and Specialty Map Service Impl - CLOSED
 
