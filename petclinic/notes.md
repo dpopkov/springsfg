@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 29, 31: Create PetType and Specialty Map Service Impl - CLOSED
+
 #### Issue 28: Add Contact Info Properties to Owner - CLOSED
 
 #### Issue 27: Create Vet Speciality Entity, Associate to Vet - CLOSED
