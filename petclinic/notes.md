@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 25: Add missing i18n properties files - CLOSED
+
 #### Issue 18: Apply master layout to Index Page - CLOSED
 
 #### Issue 24: Implement WRO4J Maven Plugin and SPC resources - CLOSED
