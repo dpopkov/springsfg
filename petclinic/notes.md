@@ -4,6 +4,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 19: Apply Master Layout to Owners List Page - CLOSED
+
 #### Issue 25: Add missing i18n properties files - CLOSED
 
 #### Issue 18: Apply master layout to Index Page - CLOSED
