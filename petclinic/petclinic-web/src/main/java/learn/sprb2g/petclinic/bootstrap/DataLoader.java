@@ -1,11 +1,9 @@
 package learn.sprb2g.petclinic.bootstrap;
 
-import learn.sprb2g.petclinic.model.Owner;
-import learn.sprb2g.petclinic.model.Pet;
-import learn.sprb2g.petclinic.model.PetType;
-import learn.sprb2g.petclinic.model.Vet;
+import learn.sprb2g.petclinic.model.*;
 import learn.sprb2g.petclinic.services.OwnerService;
 import learn.sprb2g.petclinic.services.PetTypeService;
+import learn.sprb2g.petclinic.services.SpecialityService;
 import learn.sprb2g.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,11 +19,14 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialityService specialityService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService,
+                      PetTypeService petTypeService, SpecialityService specialityService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialityService = specialityService;
     }
 
     /**
@@ -33,6 +34,13 @@ public class DataLoader implements CommandLineRunner {
      */
     @Override
     public void run(String... args) {
+        int count = petTypeService.findAll().size();
+        if (count == 0) {
+            loadData();
+        }
+    }
+
+    private void loadData() {
         PetType dogType = savePetType("Dog");
         PetType catType = savePetType("Cat");
 
@@ -45,9 +53,21 @@ public class DataLoader implements CommandLineRunner {
         fiona.getPets().add(fionaPet);
         System.out.println("Loaded Owners and their Pets...");
 
-        saveVet("Same", "Axe");
-        saveVet("Jane", "Doe");
-        System.out.println("Loaded Vets...");
+        Speciality radiology = saveSpeciality("Radiology");
+        Speciality surgery = saveSpeciality("Surgery");
+        Speciality dentistry = saveSpeciality("Dentistry");
+
+        Vet same = saveVet("Same", "Axe");
+        same.getSpecialities().add(radiology);
+        Vet jane = saveVet("Jane", "Doe");
+        jane.getSpecialities().add(surgery);
+        System.out.println("Loaded Vets and Specialities...");
+    }
+
+    private Speciality saveSpeciality(String description) {
+        Speciality spec = new Speciality();
+        spec.setDescription(description);
+        return specialityService.save(spec);
     }
 
     private Pet savePet(PetType type, String name, Owner owner, LocalDate dob) {
@@ -75,10 +95,10 @@ public class DataLoader implements CommandLineRunner {
         return ownerService.save(owner);
     }
 
-    private void saveVet(String firstName, String lastName) {
+    private Vet saveVet(String firstName, String lastName) {
         Vet vet = new Vet();
         vet.setFirstName(firstName);
         vet.setLastName(lastName);
-        vetService.save(vet);
+        return vetService.save(vet);
     }
 }
