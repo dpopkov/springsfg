@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 57: Fix the Menu Links that are Broken - CLOSED
+
 #### Issue 52: Create Specialities, add to Vets on Startup (Bootstrap) - CLOSED
 
 #### Issue 33: Enhance Owners with contact info and Pets on startup - CLOSED
