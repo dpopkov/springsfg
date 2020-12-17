@@ -5,3 +5,4 @@
 3. Entity: Ingredient
 4. Use OneToMany and ManyToOne relationships.
 5. Assignment: add entity UnitOfMeasure in Ingredient as uni-directional OneToOne reference.
+6. Add Difficulty as enumeration.
