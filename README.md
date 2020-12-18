@@ -28,3 +28,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Web Development with Spring MVC
 * Spring Boot Development Tools
 * OneToOne, OneToMany, ManyToOne relationships
+* Using CrudRepository
