@@ -30,3 +30,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * OneToOne, OneToMany, ManyToOne relationships
 * Using CrudRepository
 * Database initialization with Spring
+* Spring Data JPA Query Methods
