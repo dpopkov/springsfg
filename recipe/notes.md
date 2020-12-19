@@ -9,3 +9,4 @@
 7. Add Category as bi-directional ManyToMany relationship with Recipe.
 8. Add data.sql for Database initialization with Spring.
 9. Example Spring Data JPA Query Methods.
+10. Assignment: Display List of Recipes.
