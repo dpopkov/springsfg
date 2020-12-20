@@ -56,21 +56,19 @@ public class DataLoader implements CommandLineRunner {
                 "(See How to Cut and Peel an Avocado.) Place in a bowl.\n" +
                 "... more items");
         guacamole.setDifficulty(Difficulty.EASY);
-
         Notes guacamoleNotes = new Notes();
         guacamoleNotes.setRecipeNotes("Be careful handling chiles if using. Wash your hands thoroughly after handling " +
                 "and do not touch your eyes or the area near your eyes with your hands for several hours.");
         guacamole.setNotes(guacamoleNotes);
-        guacamoleNotes.setRecipe(guacamole);
 
-        addIngredient(guacamole, "Ripe Avocados", 2, each);
-        addIngredient(guacamole, "Salt", 0.25, teaspoon);
-        addIngredient(guacamole, "Lemon juice", 1, tablespoon);
-        addIngredient(guacamole, "Red Onion", 2, tablespoon);
-        addIngredient(guacamole, "Serrano Chiles", 2, each);
-        addIngredient(guacamole, "Cilantro", 2, tablespoon);
-        addIngredient(guacamole, "Black Pepper", 1, dash);
-        addIngredient(guacamole, "Ripe Tomato chopped", 0.5, each);
+        guacamole.addIngredient(new Ingredient("Ripe Avocados", 2, each));
+        guacamole.addIngredient(new Ingredient("Salt", 0.25, teaspoon));
+        guacamole.addIngredient(new Ingredient("Lemon juice", 1, tablespoon));
+        guacamole.addIngredient(new Ingredient("Red Onion", 2, tablespoon));
+        guacamole.addIngredient(new Ingredient("Serrano Chiles", 2, each));
+        guacamole.addIngredient(new Ingredient("Cilantro", 2, tablespoon));
+        guacamole.addIngredient(new Ingredient("Black Pepper", 1, dash));
+        guacamole.addIngredient(new Ingredient("Ripe Tomato chopped", 0.5, each));
 
         recipes.add(guacamole);
 
@@ -89,32 +87,25 @@ public class DataLoader implements CommandLineRunner {
                 "Add the chicken to the bowl and toss to coat all over. " +
                 "Set aside to marinate while the grill heats and you prepare the rest of the toppings.\n" +
                 "... more items");
-
         Notes tacosNotes = new Notes();
         tacosNotes.setRecipeNotes("Look for ancho chile powder with the Mexican ingredients at your grocery store, " +
                 "on buy it online.");
         tacos.setNotes(tacosNotes);
-        tacosNotes.setRecipe(tacos);
 
-        addIngredient(tacos, "Chili powder", 2, tablespoon);
-        addIngredient(tacos, "Dried Oregano", 1, teaspoon);
-        addIngredient(tacos, "Dried Cumin", 1, teaspoon);
-        addIngredient(tacos, "Sugar", 1, teaspoon);
-        addIngredient(tacos, "Slat", 0.5, teaspoon);
-        addIngredient(tacos, "Garlic Chopped", 1, each);
-        addIngredient(tacos, "Orange zest", 1, tablespoon);
-        addIngredient(tacos, "Orange juice", 3, tablespoon);
-        addIngredient(tacos, "Olive Oil", 2, tablespoon);
-        addIngredient(tacos, "Chicken Thighs", 6, each);
+        tacos.addIngredient(new Ingredient("Chili powder", 2, tablespoon));
+        tacos.addIngredient(new Ingredient("Dried Oregano", 1, teaspoon));
+        tacos.addIngredient(new Ingredient("Dried Cumin", 1, teaspoon));
+        tacos.addIngredient(new Ingredient("Sugar", 1, teaspoon));
+        tacos.addIngredient(new Ingredient("Slat", 0.5, teaspoon));
+        tacos.addIngredient(new Ingredient("Garlic Chopped", 1, each));
+        tacos.addIngredient(new Ingredient("Orange zest", 1, tablespoon));
+        tacos.addIngredient(new Ingredient("Orange juice", 3, tablespoon));
+        tacos.addIngredient(new Ingredient("Olive Oil", 2, tablespoon));
+        tacos.addIngredient(new Ingredient("Chicken Thighs", 6, each));
 
         recipes.add(tacos);
 
         return recipes;
-    }
-
-    private void addIngredient(Recipe recipe, String description, double amount, UnitOfMeasure unit) {
-        Ingredient ingredient = new Ingredient(description, amount, unit, recipe);
-        recipe.getIngredients().add(ingredient);
     }
 
     private Category categoryByDescription(String description) {

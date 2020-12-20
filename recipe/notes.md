@@ -10,3 +10,4 @@
 8. Add data.sql for Database initialization with Spring.
 9. Example Spring Data JPA Query Methods.
 10. Assignment: Display List of Recipes.
+11. Refactor logic into entity's setters.
