@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 53: Update Base Entity with JPA annotation - CLOSED
+
 #### Issue 57: Fix the Menu Links that are Broken - CLOSED
 
 #### Issue 52: Create Specialities, add to Vets on Startup (Bootstrap) - CLOSED
