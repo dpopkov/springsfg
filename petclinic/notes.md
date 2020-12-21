@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 54: Convert Owners to JPA Entities - CLOSED
+
 #### Issue 53: Update Base Entity with JPA annotation - CLOSED
 
 #### Issue 57: Fix the Menu Links that are Broken - CLOSED
