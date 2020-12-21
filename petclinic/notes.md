@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 55: Convert Vets to JPA Entities - CLOSED
+
 #### Issue 54: Convert Owners to JPA Entities - CLOSED
 
 #### Issue 53: Update Base Entity with JPA annotation - CLOSED
