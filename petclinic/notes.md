@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 48: Create Spring Data JPA Service for Vets - CLOSED
+
 #### Issue 47: Create Spring Data JPA Service for Owners - CLOSED
 
 #### Issue 46: Add Spring Data JPA Repositories - CLOSED
