@@ -45,6 +45,9 @@ public class OwnerServiceSDJpa implements OwnerService {
 
     @Override
     public Owner save(Owner entity) {
+        if (entity == null) {
+            throw new IllegalArgumentException("Owner cannot be null");
+        }
         return ownerRepository.save(entity);
     }
 

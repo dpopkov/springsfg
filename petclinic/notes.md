@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 49, 50, 51: Create Spring Data JPA Service for PetType, Pet, Vet Speciality - CLOSED
+
 #### Issue 48: Create Spring Data JPA Service for Vets - CLOSED
 
 #### Issue 47: Create Spring Data JPA Service for Owners - CLOSED
