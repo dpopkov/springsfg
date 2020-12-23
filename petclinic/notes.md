@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 59: Create Spring Data JPA Service for Visit - CLOSED
+
 #### Issue 58: Create Visit Map Service - CLOSED
 
 #### Issue 49, 50, 51: Create Spring Data JPA Service for PetType, Pet, Vet Speciality - CLOSED
@@ -24,7 +26,7 @@
 
 #### Issue 52: Create Specialities, add to Vets on Startup (Bootstrap) - CLOSED
 
-#### Issue 33: Enhance Owners with contact info and Pets on startup - CLOSED
+#### Issue 33: Enhance Owners with contact info and Pets on the startup - CLOSED
 
 #### Issue 32: Add PetTypes in with Bootstrap (startup) - CLOSED
 
