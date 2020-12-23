@@ -1,4 +1,6 @@
-# springsfg - Spring Framework Guru Projects
+# springsfg - Spring Framework Guru
+
+## "Spring Framework 5" Course Projects
 
 ### 2 - [Pet Clinic](petclinic) 
 Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-petclinic) Application.
@@ -12,7 +14,7 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 ### 1 - [Spring 5 Demo](spring5demo)
  Simple demo web application using in-memory database.
 
-## Course contents:
+## "Spring Framework 5" Course contents:
 
 * Introduction to Spring Framework 5
 * Building a Spring Boot Web App
@@ -31,3 +33,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Using CrudRepository
 * Database initialization with Spring
 * Spring Data JPA Query Methods
+* Use Spring Active Profile to wire in the implementations of components.

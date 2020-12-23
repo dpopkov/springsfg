@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 71: Update Profiles to use Spring Data JPA Services - CLOSED
+
 #### Issue 60: Load Visits on Startup in Bootstrap - CLOSED
 
 #### Issue 59: Create Spring Data JPA Service for Visit - CLOSED

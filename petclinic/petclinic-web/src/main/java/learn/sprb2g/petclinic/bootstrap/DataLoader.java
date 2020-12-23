@@ -63,10 +63,8 @@ public class DataLoader implements CommandLineRunner {
         Speciality surgery = saveSpeciality("Surgery");
         Speciality dentistry = saveSpeciality("Dentistry");
 
-        Vet same = saveVet("Same", "Axe");
-        same.getSpecialities().add(radiology);
-        Vet jane = saveVet("Jane", "Doe");
-        jane.getSpecialities().add(surgery);
+        saveVet("Same", "Axe", radiology);
+        saveVet("Jane", "Doe", surgery);
         System.out.println("Loaded Vets and Specialities...");
     }
 
@@ -101,10 +99,13 @@ public class DataLoader implements CommandLineRunner {
         return ownerService.save(owner);
     }
 
-    private Vet saveVet(String firstName, String lastName) {
+    private Vet saveVet(String firstName, String lastName, Speciality... specialities) {
         Vet vet = new Vet();
         vet.setFirstName(firstName);
         vet.setLastName(lastName);
+        for (Speciality speciality : specialities) {
+            vet.getSpecialities().add(speciality);
+        }
         return vetService.save(vet);
     }
 }

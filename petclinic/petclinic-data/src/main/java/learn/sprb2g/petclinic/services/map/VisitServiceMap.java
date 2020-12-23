@@ -4,9 +4,11 @@ import learn.sprb2g.petclinic.model.Owner;
 import learn.sprb2g.petclinic.model.Pet;
 import learn.sprb2g.petclinic.model.Visit;
 import learn.sprb2g.petclinic.services.VisitService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile({"default", "service-map"})
 public class VisitServiceMap extends AbstractMapService<Visit> implements VisitService {
 
     @Override
