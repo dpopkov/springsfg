@@ -1,10 +1,7 @@
 package learn.sprb2g.petclinic.bootstrap;
 
 import learn.sprb2g.petclinic.model.*;
-import learn.sprb2g.petclinic.services.OwnerService;
-import learn.sprb2g.petclinic.services.PetTypeService;
-import learn.sprb2g.petclinic.services.SpecialityService;
-import learn.sprb2g.petclinic.services.VetService;
+import learn.sprb2g.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,15 +15,20 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetService petService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     public DataLoader(OwnerService ownerService, VetService vetService,
-                      PetTypeService petTypeService, SpecialityService specialityService) {
+                      PetService petService, PetTypeService petTypeService,
+                      SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petService = petService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     /**
@@ -53,6 +55,10 @@ public class DataLoader implements CommandLineRunner {
         fiona.getPets().add(fionaPet);
         System.out.println("Loaded Owners and their Pets...");
 
+        Visit fionaCatVisit = new Visit(LocalDate.now(), "Visit of Fiona and her cat", fionaPet);
+        visitService.save(fionaCatVisit);
+        System.out.println("Loaded Visits");
+
         Speciality radiology = saveSpeciality("Radiology");
         Speciality surgery = saveSpeciality("Surgery");
         Speciality dentistry = saveSpeciality("Dentistry");
@@ -76,7 +82,7 @@ public class DataLoader implements CommandLineRunner {
         pet.setName(name);
         pet.setOwner(owner);
         pet.setBirthDate(dob);
-        return pet;
+        return petService.save(pet);
     }
 
     private PetType savePetType(String name) {
