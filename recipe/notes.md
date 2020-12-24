@@ -11,3 +11,4 @@
 9. Example Spring Data JPA Query Methods.
 10. Assignment: Display List of Recipes.
 11. Refactor logic into entity's setters.
+12. Refactor with Project Lombok.

@@ -4,12 +4,15 @@ import learn.sprb2g.recipe.domain.*;
 import learn.sprb2g.recipe.repositories.CategoryRepository;
 import learn.sprb2g.recipe.repositories.RecipeRepository;
 import learn.sprb2g.recipe.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -25,11 +28,13 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) {
         recipeRepository.saveAll(createRecipes());
     }
 
     private List<Recipe> createRecipes() {
+        log.info("In DataLoader::createRecipes()");
         List<Recipe> recipes = new ArrayList<>(2);
 
         UnitOfMeasure each = unitByDescription("Each");

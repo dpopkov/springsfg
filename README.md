@@ -34,3 +34,4 @@ Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-pe
 * Database initialization with Spring
 * Spring Data JPA Query Methods
 * Use Spring Active Profile to wire in the implementations of components.
+* Project [Lombok](Lombok.md)
