@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 63: Add Project Lombok and Refactor - CLOSED
+
 #### Issue 71: Update Profiles to use Spring Data JPA Services - CLOSED
 
 #### Issue 60: Load Visits on Startup in Bootstrap - CLOSED
