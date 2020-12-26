@@ -5,3 +5,11 @@
 * Use Bootstrap class to create recipes on startup
 * Create Service to return recipe list to controller
 * Pass list to Thymeleaf view to display on index page
+
+
+# Write Unit Test for Index Controller
+
+* Create JUnit test for Index Controller
+* Use Mockito Mock for RecipeService and Model
+* Verify proper string is returned
+* Verify interactions with mocks
