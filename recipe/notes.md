@@ -13,3 +13,4 @@
 11. Refactor logic into entity's setters.
 12. Refactor with Project Lombok.
 13. Use Bootstrap CSS.
+14. Use Mockito mocks.
