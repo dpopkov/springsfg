@@ -16,3 +16,4 @@
 14. Use Mockito mocks.
 15. Mockito Argument capture.
 16. Spring MockMVC.
+17. Spring Integration tests.
