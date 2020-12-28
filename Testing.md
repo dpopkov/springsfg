@@ -55,3 +55,18 @@ Test Scope Dependencies
 Spring Boot Annotations
 -----------------------
 Placeholder for a table.
+
+
+JUnit4 vs JUnit5
+----------------
+| JUnit 4                       | JUnit 5                               |   |
+|-------------------------------|---------------------------------------|---|
+| @Test(expected = Foo.class    | Assertions.assertThrows(Foo.class)    |   |
+| @Test(timeout = 1)            | Assertions.assertTimeout(Duration...) |   |
+| @RunWidth(SpringJUnit4ClassRunner.class)  | @ExtendWith(SpringExtension.class) |  @SpringBootTest contains it |
+| @Before                       | @BeforeEach   |   |
+| @After                        | @AfterEach    |   |
+| @BeforeClass                  | @BeforeAll    |   |
+| @AfterClass                   | @AfterAll     |   |
+| @Ignored                      | @Disabled     |   |
+| @Category                     | @Tag          |   |
