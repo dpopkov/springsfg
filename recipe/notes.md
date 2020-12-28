@@ -17,3 +17,4 @@
 15. Mockito Argument capture.
 16. Spring MockMVC.
 17. Spring Integration tests.
+18. Use Maven Failsafe Plugin to run Integration tests.
