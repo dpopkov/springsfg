@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 64: Write Spring MVC Tests for Owner Controller - CLOSED
+
 #### Issue 62: Write CRUD Tests for Owner Spring Data JPA Service - CLOSED
 
 #### Issue 61: Write CRUD Tests for Owner Map Service - CLOSED
