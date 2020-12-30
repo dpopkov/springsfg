@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 62: Write CRUD Tests for Owner Spring Data JPA Service - CLOSED
+
 #### Issue 61: Write CRUD Tests for Owner Map Service - CLOSED
 
 #### Issue 63: Add Project Lombok and Refactor - CLOSED
