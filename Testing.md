@@ -54,19 +54,52 @@ Test Scope Dependencies
     
 Spring Boot Annotations
 -----------------------
-Placeholder for a table.
-
+| Annotation            | Description               |
+|-----------------------|---------------------------|
+| @RunWith(SpringRunner.class) - if JUnit ver<5         | Run test with Spring Context  |
+| @ExtendWith(SpringExtension.class) - if JUnit ver==5  | Run test with Spring Context  |
+| @SpringBootTest       | Search for Spring Boot Application for configuration  |
+| @TestConfiguration    | Specify a Spring configuration for your test          |
+| @MockBean             | Injects Mockito Mock          |
+| @SpyBean              | Inject Mockito Spy            |
+| @JsonTest             | Creates a Jackson or Gson object mapper via Spring Boot   |
+| @WebMvcTest           | Used to test web context without a full http server       |
+| @DataJpaTest          | Used to test data layer with embedded database            |
+| @JdbcTest             | Like @DataJpaTest, but does not configure entity manager  |
+| @DataMongoTest        | Configures an embedded MongoDB tor testing                |
+| @RestClientTest       | Creates a mock server for testing rest clients            |
+| @AutoConfigureRestDocs    | Allows you to use Spring Rest Docs in tests, creating API documentation   |
+| @BootStrapWith        | Used to configure how the TestContext is bootstrapped                 |
+| @ContextConfiguration | Used to direct Spring how to configure the context for the test       |
+| @ContextHierarchy     | Allows you to create a context hierarchy with @ContextConfiguration   |
+| @ActiveProfiles       | Set which Spring Profiles are active for the test             | 
+| @TestPropertySource   | Configure the property sources for the test                   |
+| @DirtiesContext       | Resets the Spring Context after the test (expensive to do)    |
+| @WebAppConfiguration  | Indicates Spring should use a Web Application context         |
+| @TestExecutionListeners   | Allows you to specify listeners for testing events        |
+| @Transactional        | Run test in transaction, rollback when complete by default    |
+| @BeforeTransaction    | Action to run before starting a transaction                   |
+| @AfterTransaction     | Action to run after a transaction                             |
+| @Commit               | Specifies the transaction should be committed after the test  |
+| @Rollback             | Transaction should be rolled back after test (default action) |
+| @Sql                  | Specify SQL scripts to run before                             |
+| @SqlConfig            | Define meta data for SQL scripts                              |
+| @SqlGroup             | Group of @Sql annotations                                     |
+| @Repeat               | Repeat test x number of times                                 |
+| @Timed                | Similar to JUnit timeout, but will wait for test to complete, unlike JUnit    |
+| @IfProfileValue       | Indicates test is enabled for a specific testing environment  |
+| @ProfileValueSourceConfiguration  | Specify a profile value source                    | 
 
 JUnit4 vs JUnit5
 ----------------
 | JUnit 4                       | JUnit 5                               |   |
 |-------------------------------|---------------------------------------|---|
-| @Test(expected = Foo.class    | Assertions.assertThrows(Foo.class)    |   |
+| @Test(expected = Foo.class)   | Assertions.assertThrows(Foo.class)    |   |
 | @Test(timeout = 1)            | Assertions.assertTimeout(Duration...) |   |
 | @RunWidth(SpringJUnit4ClassRunner.class)  | @ExtendWith(SpringExtension.class) |  @SpringBootTest contains it |
 | @Before                       | @BeforeEach   |   |
 | @After                        | @AfterEach    |   |
 | @BeforeClass                  | @BeforeAll    |   |
 | @AfterClass                   | @AfterAll     |   |
-| @Ignored                      | @Disabled     |   |
+| @Ignore                       | @Disabled     |   |
 | @Category                     | @Tag          |   |

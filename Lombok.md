@@ -32,3 +32,9 @@ About Lombok
 
 * Add Maven dependency (the version is curated by Spring Boot starter).
 * Add Lombok plug-in to Intellij Idea.
+* Enable "Annotation Processing" in Intellij Idea Compiler settings.
+
+## Things to pay attention to
+1) Setters that are not just setting values
+2) Cyclic (bi-directional) references in generated methods (equals and hashcode ...) ----> Solution: exclude fields
+3) In case of LazyInitializationException apply annotation @Transactional.
