@@ -18,3 +18,4 @@
 16. Spring MockMVC.
 17. Spring Integration tests.
 18. Use Maven Failsafe Plugin to run Integration tests.
+19. Use WebJars with Spring Boot.
