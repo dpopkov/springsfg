@@ -19,3 +19,4 @@
 17. Spring Integration tests.
 18. Use Maven Failsafe Plugin to run Integration tests.
 19. Use WebJars with Spring Boot.
+20. Display a Recipe by ID (add view page, TDD service and controller).

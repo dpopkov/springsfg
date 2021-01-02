@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -39,5 +40,26 @@ class RecipeServiceImplTest {
         when(recipeRepository.findAll()).thenReturn(data);
         assertEquals(2, recipeService.findAll().size());
         verify(recipeRepository, times(1)).findAll();
+    }
+
+    @Test
+    void testFindById() {
+        final Long theId = 10L;
+        Recipe recipe = Recipe.builder().id(theId).build();
+        when(recipeRepository.findById(anyLong())).thenReturn(Optional.of(recipe));
+
+        Recipe found = recipeService.findById(theId);
+        assertNotNull(found);
+        assertEquals(theId, found.getId());
+        verify(recipeRepository).findById(theId);
+        verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    void testFindByIdNotExisting() {
+        final Long theId = 10L;
+        when(recipeRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> recipeService.findById(theId));
     }
 }
