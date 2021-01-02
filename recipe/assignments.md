@@ -13,3 +13,10 @@
 * Use Mockito Mock for RecipeService and Model
 * Verify proper string is returned
 * Verify interactions with mocks
+
+# Display Remaining Recipe Properties
+
+* Add hint for recipe type
+* Add iterator for categories
+* Add iterator for ingredients
+* Complete remaining properties
