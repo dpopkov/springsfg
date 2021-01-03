@@ -1,5 +1,7 @@
 package learn.sprb2g.recipe.services;
 
+import learn.sprb2g.recipe.converters.RecipeCommandToRecipe;
+import learn.sprb2g.recipe.converters.RecipeToRecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
 import learn.sprb2g.recipe.repositories.RecipeRepository;
 import org.junit.jupiter.api.*;
@@ -18,13 +20,17 @@ class RecipeServiceImplTest {
 
     @Mock
     RecipeRepository recipeRepository;
+    @Mock
+    private RecipeCommandToRecipe recipeCommandToRecipe;
+    @Mock
+    private RecipeToRecipeCommand recipeToRecipeCommand;
 
     private AutoCloseable autoCloseable;
 
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @AfterEach
