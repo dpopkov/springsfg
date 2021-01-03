@@ -1,12 +1,11 @@
 package learn.sprb2g.recipe.controllers;
 
+import learn.sprb2g.recipe.commands.RecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
 import learn.sprb2g.recipe.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/recipe")
@@ -23,5 +22,17 @@ public class RecipeController {
         Recipe recipe = recipeService.findById(id);
         model.addAttribute("recipe", recipe);
         return "recipe/show";
+    }
+
+    @RequestMapping("/new")
+    public String newRecipe(Model model) {
+        model.addAttribute("recipe", new RecipeCommand());
+        return "recipe/recipeform";
+    }
+
+    @PostMapping("/")
+    public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
+        RecipeCommand saved = recipeService.saveRecipeCommand(command);
+        return "redirect:/recipe/show/" + saved.getId();
     }
 }
