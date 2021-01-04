@@ -17,7 +17,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @GetMapping("/show/{id}")
+    @GetMapping("/{id}/show")
     public String showById(@PathVariable Long id, Model model) {
         Recipe recipe = recipeService.findById(id);
         model.addAttribute("recipe", recipe);
@@ -33,6 +33,6 @@ public class RecipeController {
     @PostMapping("/")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
         RecipeCommand saved = recipeService.saveRecipeCommand(command);
-        return "redirect:/recipe/show/" + saved.getId();
+        return "redirect:/recipe/"  + saved.getId() + "/show";
     }
 }
