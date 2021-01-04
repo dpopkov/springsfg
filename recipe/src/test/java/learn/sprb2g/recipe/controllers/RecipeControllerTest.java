@@ -8,14 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -70,5 +67,18 @@ class RecipeControllerTest {
         )
         .andExpect(status().is3xxRedirection())
         .andExpect(view().name("redirect:/recipe/20/show"));
+    }
+
+    @Test
+    void testGetUpdateView() throws Exception {
+        final Long theId = 30L;
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(theId);
+        when(recipeService.findCommandById(theId)).thenReturn(recipeCommand);
+
+        mockMvc.perform(get("/recipe/" + theId + "/update"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("recipe/recipeform"))
+                .andExpect(model().attributeExists("recipe"));
     }
 }

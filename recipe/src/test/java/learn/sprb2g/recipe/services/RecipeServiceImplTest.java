@@ -1,5 +1,6 @@
 package learn.sprb2g.recipe.services;
 
+import learn.sprb2g.recipe.commands.RecipeCommand;
 import learn.sprb2g.recipe.converters.RecipeCommandToRecipe;
 import learn.sprb2g.recipe.converters.RecipeToRecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
@@ -67,5 +68,22 @@ class RecipeServiceImplTest {
         when(recipeRepository.findById(anyLong())).thenReturn(Optional.empty());
 
         assertThrows(RuntimeException.class, () -> recipeService.findById(theId));
+    }
+
+    @Test
+    void testFindCommandById() {
+        final Long theId = 10L;
+        Recipe recipe = new Recipe();
+        recipe.setId(theId);
+        when(recipeRepository.findById(anyLong())).thenReturn(Optional.of(recipe));
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(theId);
+        when(recipeToRecipeCommand.convert(recipe)).thenReturn(recipeCommand);
+
+        RecipeCommand found = recipeService.findCommandById(theId);
+        assertNotNull(found);
+        assertEquals(theId, found.getId());
+        verify(recipeRepository).findById(theId);
+        verify(recipeToRecipeCommand).convert(recipe);
     }
 }
