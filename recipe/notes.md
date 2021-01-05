@@ -25,3 +25,5 @@
 23. Update a Recipe.
 24. Delete a Recipe.
 25. View Ingredients.
+26. Show Ingredient.
+
