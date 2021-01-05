@@ -3,10 +3,13 @@ package learn.sprb2g.recipe.controllers;
 import learn.sprb2g.recipe.commands.RecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
 import learn.sprb2g.recipe.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@SuppressWarnings("SameReturnValue")
+@Slf4j
 @Controller
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -24,7 +27,7 @@ public class RecipeController {
         return "recipe/show";
     }
 
-    @RequestMapping("/new")
+    @GetMapping("/new")
     public String newRecipe(Model model) {
         model.addAttribute("recipe", new RecipeCommand());
         return "recipe/recipeform";
@@ -40,6 +43,13 @@ public class RecipeController {
     @PostMapping("/")
     public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
         RecipeCommand saved = recipeService.saveRecipeCommand(command);
-        return "redirect:/recipe/"  + saved.getId() + "/show";
+        return "redirect:/recipe/" + saved.getId() + "/show";
+    }
+
+    @GetMapping("/{id}/delete")
+    public String deleteRecipe(@PathVariable Long id) {
+        log.debug("Deleting Recipe ID: " + id);
+        recipeService.deleteById(id);
+        return "redirect:/";
     }
 }

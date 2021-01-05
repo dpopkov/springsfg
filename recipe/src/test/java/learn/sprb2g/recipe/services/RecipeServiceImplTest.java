@@ -86,4 +86,11 @@ class RecipeServiceImplTest {
         verify(recipeRepository).findById(theId);
         verify(recipeToRecipeCommand).convert(recipe);
     }
+
+    @Test
+    void testDeleteById() {
+        final Long deleteId = 10L;
+        recipeService.deleteById(deleteId);
+        verify(recipeRepository).deleteById(deleteId);
+    }
 }

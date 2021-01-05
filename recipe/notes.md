@@ -23,3 +23,4 @@
 21. Create Command Objects and Type Conversions in Spring.
 22. Create a Recipe.
 23. Update a Recipe.
+24. Delete a Recipe.
