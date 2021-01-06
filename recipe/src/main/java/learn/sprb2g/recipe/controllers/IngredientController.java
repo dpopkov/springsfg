@@ -48,6 +48,18 @@ public class IngredientController {
         return "recipe/ingredient/show";
     }
 
+    @GetMapping("/recipe/{recipeId}/ingredient/new")
+    public String newRecipeIngredient(@PathVariable Long recipeId, Model model) {
+        RecipeCommand recipeCommand = recipeService.findCommandById(recipeId);
+        IngredientCommand ingredient = new IngredientCommand();
+        ingredient.setRecipeId(recipeCommand.getId());
+        ingredient.setUnit(new UnitOfMeasureCommand());
+        model.addAttribute("ingredient", ingredient);
+        Set<UnitOfMeasureCommand> uomAll = unitOfMeasureService.findAll();
+        model.addAttribute("uomAll", uomAll);
+        return "recipe/ingredient/ingredientform";
+    }
+
     @GetMapping("/recipe/{recipeId}/ingredient/{ingredientId}/update")
     public String updateRecipeIngredient(@PathVariable Long recipeId, @PathVariable Long ingredientId, Model model) {
         IngredientCommand ingredient = ingredientService.findByRecipeIdAndIngredientId(recipeId, ingredientId);

@@ -27,3 +27,4 @@
 25. View Ingredients.
 26. Show Ingredient.
 27. Update Ingredient.
+28. Create an Ingredient.
