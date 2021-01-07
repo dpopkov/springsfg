@@ -32,3 +32,4 @@
 30. Enumeration Dropdowns with Spring MVC and Thymeleaf.
 31. Uploading Images with Spring MVC.
 32. Persisting Images to Database.
+33. Displaying Images from Database.

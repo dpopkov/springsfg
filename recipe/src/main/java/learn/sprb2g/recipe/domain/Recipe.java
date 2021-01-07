@@ -36,7 +36,7 @@ public class Recipe {
     private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
-    private byte[] image;
+    private byte[] image = new byte[0];
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
