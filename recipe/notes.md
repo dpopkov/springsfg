@@ -30,3 +30,5 @@
 28. Create an Ingredient.
 29. Delete an Ingredient.
 30. Enumeration Dropdowns with Spring MVC and Thymeleaf.
+31. Uploading Images with Spring MVC.
+
