@@ -28,3 +28,4 @@
 26. Show Ingredient.
 27. Update Ingredient.
 28. Create an Ingredient.
+29. Delete an Ingredient.
