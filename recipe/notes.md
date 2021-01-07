@@ -29,3 +29,4 @@
 27. Update Ingredient.
 28. Create an Ingredient.
 29. Delete an Ingredient.
+30. Enumeration Dropdowns with Spring MVC and Thymeleaf.
