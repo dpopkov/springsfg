@@ -53,6 +53,19 @@ class OwnerControllerTest {
     }
 
     @Test
+    void testShowOwner() throws Exception {
+        final Long ownerId = 10L;
+        Owner owner = Owner.builder().id(ownerId).build();
+        when(ownerService.findById(ownerId)).thenReturn(owner);
+
+        mockMvc.perform(get("/owners/" + ownerId))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownerDetails"))
+                .andExpect(model().attribute("owner", hasProperty("id", is(ownerId))));
+        verify(ownerService).findById(ownerId);
+    }
+
+    @Test
     void testFind() throws Exception {
         mockMvc.perform(get("/owners/find"))
                 .andExpect(view().name("notimplemented"));
