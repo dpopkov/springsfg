@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -105,5 +106,51 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/ownerDetails"))
                 .andExpect(model().attribute("owner", hasProperty("id", is(ownerId))));
         verify(ownerService).findById(ownerId);
+    }
+
+    @Test
+    void testInitCreationForm() throws Exception {
+        mockMvc.perform(get("/owners/new"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/createOrUpdateOwnerForm"))
+                .andExpect(model().attributeExists("owner"));
+        verifyNoInteractions(ownerService);
+    }
+
+    @Test
+    void testProcessCreationForm() throws Exception {
+        final Long ownerId = 10L;
+        Owner owner = Owner.builder().id(ownerId).build();
+        when(ownerService.save(ArgumentMatchers.any(Owner.class))).thenReturn(owner);
+
+        mockMvc.perform(post("/owners/new"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/owners/" + ownerId));
+        verify(ownerService).save(ArgumentMatchers.any(Owner.class));
+    }
+
+    @Test
+    void testInitUpdateOwnerForm() throws Exception {
+        final Long ownerId = 10L;
+        Owner owner = Owner.builder().id(ownerId).build();
+        when(ownerService.findById(ownerId)).thenReturn(owner);
+
+        mockMvc.perform(get("/owners/" + ownerId + "/edit"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/createOrUpdateOwnerForm"))
+                .andExpect(model().attributeExists("owner"));
+        verify(ownerService).findById(ownerId);
+    }
+
+    @Test
+    void testProcessUpdateOwnerForm() throws Exception {
+        final Long ownerId = 10L;
+        Owner owner = Owner.builder().id(ownerId).build();
+        when(ownerService.save(ArgumentMatchers.any(Owner.class))).thenReturn(owner);
+
+        mockMvc.perform(post("/owners/" + ownerId + "/edit"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/owners/" + ownerId));
+        verify(ownerService).save(ArgumentMatchers.any(Owner.class));
     }
 }

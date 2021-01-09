@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 67: Add ability to add or update an Owner - CLOSED
+
 #### Issue 66: Implement Find Owner - CLOSED
 
 #### Issue 65: Display Owner Record (HTML) - CLOSED
