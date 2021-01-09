@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 66: Implement Find Owner - CLOSED
+
 #### Issue 65: Display Owner Record (HTML) - CLOSED
 
 #### Issue 64: Write Spring MVC Tests for Owner Controller - CLOSED

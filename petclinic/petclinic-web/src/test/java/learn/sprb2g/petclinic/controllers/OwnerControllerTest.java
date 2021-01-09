@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.*;
@@ -43,13 +44,54 @@ class OwnerControllerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"/owners", "/owners/", "/owners/index", "/owners/index.html"})
+    @ValueSource(strings = {"/owners/index", "/owners/index.html"})
     void testList(String urlTemplate) throws Exception {
         when(ownerService.findAll()).thenReturn(owners);
         mockMvc.perform(get(urlTemplate))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/index"))
                 .andExpect(model().attribute("owners", hasSize(2)));
+    }
+
+    @Test
+    void testInitFindOwnersForm() throws Exception {
+        mockMvc.perform(get("/owners/find"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/findOwners"))
+                .andExpect(model().attributeExists("owner"));
+        verifyNoInteractions(ownerService);
+    }
+
+    @Test
+    void testProcessFormReturnMany() throws Exception {
+        List<Owner> ownerList = List.of(
+                Owner.builder().id(1L).build(),
+                Owner.builder().id(2L).build()
+        );
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(ownerList);
+        mockMvc.perform(get("/owners"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownersList"))
+                .andExpect(model().attribute("selections", hasSize(2)));
+    }
+
+    @Test
+    void testProcessFormReturnOne() throws Exception {
+        final Long ownerId = 1L;
+        List<Owner> ownerList = List.of(Owner.builder().id(ownerId).build());
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(ownerList);
+        mockMvc.perform(get("/owners"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/owners/" + ownerId));
+    }
+
+    @Test
+    void testProcessFormReturnNothing() throws Exception {
+        List<Owner> ownerList = List.of();
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(ownerList);
+        mockMvc.perform(get("/owners"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/findOwners"));
     }
 
     @Test
@@ -63,12 +105,5 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/ownerDetails"))
                 .andExpect(model().attribute("owner", hasProperty("id", is(ownerId))));
         verify(ownerService).findById(ownerId);
-    }
-
-    @Test
-    void testFind() throws Exception {
-        mockMvc.perform(get("/owners/find"))
-                .andExpect(view().name("notimplemented"));
-        verifyNoInteractions(ownerService);
     }
 }

@@ -50,7 +50,7 @@ public class DataLoader implements CommandLineRunner {
         Pet mikesPet = savePet(dogType, "Rosco", mike, LocalDate.of(2010, 1, 2));
         mike.getPets().add(mikesPet);
 
-        Owner fiona = saveOwner("Fiona", "Glenanne", "321 Brickerel", "Miami", "3213214321");
+        Owner fiona = saveOwner("Fiona", "Glenanne-Weston", "321 Brickerel", "Miami", "3213214321");
         Pet fionaPet = savePet(catType, "Tiger", fiona, LocalDate.of(2012, 2, 3));
         fiona.getPets().add(fionaPet);
         System.out.println("Loaded Owners and their Pets...");
