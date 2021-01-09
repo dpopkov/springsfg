@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 68: Add ability to add or update a Pet
+
 #### Issue 67: Add ability to add or update an Owner - CLOSED
 
 #### Issue 66: Implement Find Owner - CLOSED
