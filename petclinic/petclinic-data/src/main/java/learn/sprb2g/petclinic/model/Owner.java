@@ -31,6 +31,40 @@ public class Owner extends Person {
         this.address = address;
         this.city = city;
         this.telephone = telephone;
-        this.pets = pets;
+        if (pets != null) {
+            this.pets = pets;
+        }
+    }
+
+    public void addPet(Pet pet) {
+        if (pet != null) {
+            pets.add(pet);
+            pet.setOwner(this);
+        }
+    }
+
+    /**
+     * Finds by the given name.
+     * @param name the name
+     * @param ignoreNew flag whether to ignore new pets
+     * @return found pet or null if none found
+     */
+    public Pet findPetByName(String name, boolean ignoreNew) {
+        name = name.toLowerCase();
+        for (Pet pet : pets) {
+            if (!ignoreNew || !pet.isNew()) {
+                String compName = pet.getName().toLowerCase();
+                if (compName.equals(name)) {
+                    return pet;
+                }
+            }
+        }
+        return null;
+    }
+
+    public Pet findPetById(Long petId) {
+        return pets.stream()
+                .filter(p -> p.getId().equals(petId))
+                .findFirst().orElse(null);
     }
 }
