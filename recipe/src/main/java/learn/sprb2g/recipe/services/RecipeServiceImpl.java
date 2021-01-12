@@ -4,6 +4,7 @@ import learn.sprb2g.recipe.commands.RecipeCommand;
 import learn.sprb2g.recipe.converters.RecipeCommandToRecipe;
 import learn.sprb2g.recipe.converters.RecipeToRecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
+import learn.sprb2g.recipe.exceptions.NotFoundException;
 import learn.sprb2g.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,7 @@ public class RecipeServiceImpl implements RecipeService {
         if (opt.isPresent()) {
             return opt.get();
         }
-        throw new RuntimeException("Recipe Not Found by id: " + id);
+        throw new NotFoundException("Recipe Not Found by id: " + id);
     }
 
     @Override

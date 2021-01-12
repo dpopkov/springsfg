@@ -4,6 +4,7 @@ import learn.sprb2g.recipe.commands.RecipeCommand;
 import learn.sprb2g.recipe.converters.RecipeCommandToRecipe;
 import learn.sprb2g.recipe.converters.RecipeToRecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
+import learn.sprb2g.recipe.exceptions.NotFoundException;
 import learn.sprb2g.recipe.repositories.RecipeRepository;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
@@ -67,7 +68,7 @@ class RecipeServiceImplTest {
         final Long theId = 10L;
         when(recipeRepository.findById(anyLong())).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> recipeService.findById(theId));
+        assertThrows(NotFoundException.class, () -> recipeService.findById(theId));
     }
 
     @Test

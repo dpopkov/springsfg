@@ -2,6 +2,7 @@ package learn.sprb2g.recipe.controllers;
 
 import learn.sprb2g.recipe.commands.RecipeCommand;
 import learn.sprb2g.recipe.domain.Recipe;
+import learn.sprb2g.recipe.exceptions.NotFoundException;
 import learn.sprb2g.recipe.services.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,6 +45,16 @@ class RecipeControllerTest {
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
         verify(recipeService).findById(theId);
+    }
+
+    @Test
+    void testShowByIdNotFound() throws Exception {
+        final Long notExistingId = 10L;
+        when(recipeService.findById(notExistingId)).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/" + notExistingId + "/show"))
+                .andExpect(status().isNotFound());
+        verify(recipeService).findById(notExistingId);
     }
 
     @Test

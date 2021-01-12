@@ -33,3 +33,4 @@
 31. Uploading Images with Spring MVC.
 32. Persisting Images to Database.
 33. Displaying Images from Database.
+34. Using Spring MVC @ResponseStatus annotation.
