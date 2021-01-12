@@ -34,7 +34,9 @@ class ImageControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(imageController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(imageController)
+                .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
     }
 
     @Test
@@ -46,6 +48,15 @@ class ImageControllerTest {
                 .andExpect(view().name("/recipe/imageuploadform"))
                 .andExpect(model().attributeExists("recipe"));
         verify(recipeService).findCommandById(recipeId);
+    }
+
+    @Test
+    void testShowImageUploadFormBadId() throws Exception {
+        String badId = "not-a-number";
+        mockMvc.perform(get("/recipe/" + badId + "/image"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400error"));
+        verifyNoInteractions(recipeService);
     }
 
     @Test
