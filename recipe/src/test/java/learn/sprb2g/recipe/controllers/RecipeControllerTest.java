@@ -53,7 +53,8 @@ class RecipeControllerTest {
         when(recipeService.findById(notExistingId)).thenThrow(NotFoundException.class);
 
         mockMvc.perform(get("/recipe/" + notExistingId + "/show"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound())
+                .andExpect(view().name("404error"));
         verify(recipeService).findById(notExistingId);
     }
 
