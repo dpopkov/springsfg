@@ -44,7 +44,7 @@ public class RecipeServiceImpl implements RecipeService {
         if (opt.isPresent()) {
             return opt.get();
         }
-        throw new NotFoundException("Recipe Not Found by id: " + id);
+        throw new NotFoundException("Recipe Not Found for ID value: " + id);
     }
 
     @Override
