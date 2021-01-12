@@ -59,6 +59,15 @@ class RecipeControllerTest {
     }
 
     @Test
+    void testShowByIdNotConvertibleToLong() throws Exception {
+        final String badId = "not-a-number";
+        mockMvc.perform(get("/recipe/" + badId + "/show"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400error"));
+        verifyNoInteractions(recipeService);
+    }
+
+    @Test
     void testGetNewRecipeForm() throws Exception {
         mockMvc.perform(get("/recipe/new"))
                 .andExpect(status().isOk())

@@ -36,3 +36,4 @@
 34. Using Spring MVC @ResponseStatus annotation.
 35. Using Spring MVC Exception Handler.
 36. Showing Error Data on 404 Error Page.
+37. Handle Number Format Exception.
