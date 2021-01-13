@@ -38,3 +38,4 @@
 36. Showing Error Data on 404 Error Page.
 37. Handle Number Format Exception.
 38. Use Spring MVC Controller Advice to implement global Exception Handler.
+39. Data Validation with Spring MVC.
