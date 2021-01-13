@@ -39,3 +39,4 @@
 37. Handle Number Format Exception.
 38. Use Spring MVC Controller Advice to implement global Exception Handler.
 39. Data Validation with Spring MVC.
+40. Display Validation Errors using Thymeleaf.
