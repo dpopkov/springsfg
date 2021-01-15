@@ -13,3 +13,4 @@ Recipe Branches in SFG Project
 | L233. Data Validation with Spring MVC             | controller-advice    | data-validation-with-springmvc | [compare](https://github.com/springframeworkguru/spring5-recipe-app/compare/controller-advice...data-validation-with-springmvc) |
 | L234. Display Validation Errors using Thymeleaf   | data-validation-with-springmvc | displaying-validation-error-msgs | [compare](https://github.com/springframeworkguru/spring5-recipe-app/compare/data-validation-with-springmvc...displaying-validation-error-msgs) |
 | L235. Customize Error Messages with Message Source   | displaying-validation-error-msgs | message-source | [compare](https://github.com/springframeworkguru/spring5-recipe-app/compare/displaying-validation-error-msgs...message-source) |
+| L237. Internationalization with Spring MVC   | message-source | spring-mvc-i18n | [compare](https://github.com/springframeworkguru/spring5-recipe-app/compare/message-source...spring-mvc-i18n) |

@@ -41,3 +41,4 @@
 39. Data Validation with Spring MVC.
 40. Display Validation Errors using Thymeleaf.
 41. Customize Error Messages with Message Source.
+42. Internationalization with Spring MVC.
