@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 72: Implement Vets List View - CLOSED 
+
 #### Issue 69: Add ability to add or update a Visit - CLOSED 
 
 #### Issue 68: Add ability to add or update a Pet - CLOSED
