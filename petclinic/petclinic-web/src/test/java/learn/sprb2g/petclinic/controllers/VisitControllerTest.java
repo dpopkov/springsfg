@@ -12,6 +12,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -56,7 +57,11 @@ class VisitControllerTest {
         Pet pet = Pet.builder().id(petId).owner(owner).build();
         when(petService.findById(petId)).thenReturn(pet);
 
-        mockMvc.perform(post("/owners/" + ownerId + "/pets/" + petId + "/visits/new"))
+        mockMvc.perform(post("/owners/" + ownerId + "/pets/" + petId + "/visits/new")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("date", "2021-01-21")
+                .param("description", "description-value")
+        )
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/" + ownerId));
         verify(visitService).save(ArgumentMatchers.any(Visit.class));
