@@ -2,6 +2,8 @@
 
 #### Issue 12: Create Equals method on entity objects
 
+#### Issue 73: Implement Vets JSON Endpoint - CLOSED
+ 
 #### Issue 72: Implement Vets List View - CLOSED 
 
 #### Issue 69: Add ability to add or update a Visit - CLOSED 
