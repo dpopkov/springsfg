@@ -20,3 +20,13 @@
 * Add iterator for categories
 * Add iterator for ingredients
 * Complete remaining properties
+
+
+# Configure MySQL
+
+* Create a local MySQL instance for use in this course
+    * MySQL can be installed natively or in a Docker container
+* Setup two databases. One for dev, one for prod.
+    * Call databases sfg_dev and sfg_prod
+* Create two accounts: sft_dev_user, sfg_prod_user
+* Both should have DML, and no DDL access.
