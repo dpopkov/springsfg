@@ -42,3 +42,4 @@
 40. Display Validation Errors using Thymeleaf.
 41. Customize Error Messages with Message Source.
 42. Internationalization with Spring MVC.
+43. Spring Boot Configuration for MySQL.

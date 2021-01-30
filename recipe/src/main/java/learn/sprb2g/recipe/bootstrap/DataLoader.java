@@ -30,7 +30,9 @@ public class DataLoader implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) {
-        recipeRepository.saveAll(createRecipes());
+        if (recipeRepository.count() == 0) {
+            recipeRepository.saveAll(createRecipes());
+        }
     }
 
     private List<Recipe> createRecipes() {
