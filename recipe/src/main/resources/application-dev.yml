@@ -3,7 +3,8 @@ spring:
     url: jdbc:mysql://localhost:3306/sfg_recipe_dev
     username: sfg_dev_user
     password: dev
-    initialization-mode: always
+    platform: mysql
+#    initialization-mode: always  # Uncomment this line and create data-mysql.sql to initialize data
   jpa:
     hibernate:
       ddl-auto: validate

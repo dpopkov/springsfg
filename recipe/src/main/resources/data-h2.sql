@@ -1,3 +1,5 @@
+-- This file uses datasource platform 'h2' in its name.
+-- Datasource platform 'h2' is specified in application-default.properties.
 INSERT INTO category (description) VALUES ('American');
 INSERT INTO category (description) VALUES ('Italian');
 INSERT INTO category (description) VALUES ('Mexican');
