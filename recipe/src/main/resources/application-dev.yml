@@ -3,6 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/sfg_recipe_dev
     username: sfg_dev_user
     password: dev
+    initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: validate
@@ -11,6 +12,9 @@ spring:
     show-sql: true
     # Uncomment the lines below to generate SQL that creates the database schema
 #    properties:
+#      hibernate:
+#        hbm2ddl:
+#          delimiter: ";"
 #      javax:
 #        persistence:
 #          schema-generation:
