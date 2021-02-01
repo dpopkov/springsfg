@@ -2,6 +2,9 @@
 
 ## "Spring Framework 5" Course Projects
 
+### 3 - [Recipe Mongo Project](recipe-mongo)
+Recipe Application using MongoDB.
+
 ### 2 - [Pet Clinic](petclinic) 
 Version of the classic [Pet Clinic](https://github.com/spring-projects/spring-petclinic) Application.
 
