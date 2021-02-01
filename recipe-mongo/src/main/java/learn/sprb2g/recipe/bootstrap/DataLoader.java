@@ -17,6 +17,12 @@ import java.util.List;
 @Component
 @Profile("default")
 public class DataLoader implements CommandLineRunner {
+    private static final List<String> CATEGORIES = List.of(
+            "American", "Italian", "Mexican", "Fast Food"
+    );
+    private static final List<String> UNITS_OF_MEASURE = List.of(
+            "Tablespoon", "Teaspoon", "Cup", "Pinch", "Ounce", "Each", "Pint", "Dash"
+    );
 
     private final CategoryRepository categoryRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
@@ -33,8 +39,32 @@ public class DataLoader implements CommandLineRunner {
     @Transactional
     public void run(String... args) {
         if (recipeRepository.count() == 0) {
+            loadCategories();
+            loadUnitsOfMeasure();
             recipeRepository.saveAll(createRecipes());
         }
+    }
+
+    private void loadCategories(){
+        CATEGORIES.forEach(this::saveCategory);
+        log.info("Categories loaded");
+    }
+
+    private void loadUnitsOfMeasure(){
+        UNITS_OF_MEASURE.forEach(this::saveUnitOfMeasure);
+        log.info("UnitOfMeasure loaded");
+    }
+
+    private void saveCategory(String description) {
+        Category category = new Category();
+        category.setDescription(description);
+        categoryRepository.save(category);
+    }
+
+    private void saveUnitOfMeasure(String description) {
+        UnitOfMeasure uom1 = new UnitOfMeasure();
+        uom1.setDescription(description);
+        unitOfMeasureRepository.save(uom1);
     }
 
     private List<Recipe> createRecipes() {

@@ -1,19 +1,23 @@
 package learn.sprb2g.recipe.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = {"recipe"})
+@EqualsAndHashCode
 public class Ingredient {
 
+    @Id
     private String id;
     private String description;
     private BigDecimal amount;
+
+    @DBRef
     private UnitOfMeasure unit;
-    private Recipe recipe;
 
     public Ingredient() {
     }
@@ -23,12 +27,4 @@ public class Ingredient {
         this.amount = BigDecimal.valueOf(amount);
         this.unit = unit;
     }
-
-    public Ingredient(String description, double amount, UnitOfMeasure unit, Recipe recipe) {
-        this.description = description;
-        this.amount = BigDecimal.valueOf(amount);
-        this.unit = unit;
-        this.recipe = recipe;
-    }
-
 }

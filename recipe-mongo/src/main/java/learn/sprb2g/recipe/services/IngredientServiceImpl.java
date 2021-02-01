@@ -97,7 +97,6 @@ public class IngredientServiceImpl implements IngredientService {
             throw new RuntimeException("Cannot find Ingredient ID " + ingredientId);
         }
         Ingredient toDelete = ingredientOpt.get();
-        toDelete.setRecipe(null);
         recipe.getIngredients().remove(toDelete);
         recipeRepository.save(recipe);
         log.debug("Deleted Ingredient ID {} in Recipe ID {}", ingredientId, recipeId);

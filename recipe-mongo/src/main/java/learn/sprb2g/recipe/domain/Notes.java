@@ -1,14 +1,15 @@
 package learn.sprb2g.recipe.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = {"recipe"})
+@EqualsAndHashCode
 public class Notes {
 
+    @Id
     private String id;
-    private Recipe recipe;
     private String recipeNotes;
 
 }
