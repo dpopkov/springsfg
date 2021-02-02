@@ -52,15 +52,6 @@ class ImageControllerTest {
     }
 
     @Test
-    void testShowImageUploadFormBadId() throws Exception {
-        String badId = "not-a-number";
-        mockMvc.perform(get("/recipe/" + badId + "/image"))
-                .andExpect(status().isBadRequest())
-                .andExpect(view().name("400error"));
-        verifyNoInteractions(recipeService);
-    }
-
-    @Test
     void testHandleImagePost() throws Exception {
         MockMultipartFile multipartFile =
                 new MockMultipartFile("imagefile", "testing.txt", "text/plain",

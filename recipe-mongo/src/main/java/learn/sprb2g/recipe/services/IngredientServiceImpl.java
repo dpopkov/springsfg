@@ -44,7 +44,10 @@ public class IngredientServiceImpl implements IngredientService {
         if (first.isEmpty()) {
             throw new RuntimeException("Ingredient not found ID: " + ingredientId);
         }
-        return converter.convert(first.get());
+        Ingredient ingredient = first.get();
+        IngredientCommand ingredientCommand = converter.convert(ingredient);
+        ingredientCommand.setRecipeId(recipeId);
+        return ingredientCommand;
     }
 
     @Override
@@ -80,8 +83,11 @@ public class IngredientServiceImpl implements IngredientService {
                     .filter(ri -> ri.getUnit().getId().equals(command.getUnit().getId()))
                     .findFirst();
         }
-        return converter.convert(savedIngredientOpt.orElseThrow(
-                () -> new RuntimeException("Ingredient not saved or not found")));
+        Ingredient ingredient = savedIngredientOpt.orElseThrow(
+                () -> new RuntimeException("Ingredient not saved or not found"));
+        IngredientCommand ingredientCommand = converter.convert(ingredient);
+        ingredientCommand.setRecipeId(recipeId);
+        return ingredientCommand;
     }
 
     @Override
