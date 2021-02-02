@@ -4,3 +4,4 @@
 2. Setup embedded MongoDB.
 3. Refactor Data Model for MongoDB, remove bi-directional references.
 4. Correcting Application Defects under MongoDB.
+5. Integration Testing with MongoDB.
