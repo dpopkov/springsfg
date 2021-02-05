@@ -4,9 +4,7 @@ import learn.sprb2g.recipe.domain.*;
 import learn.sprb2g.recipe.repositories.CategoryRepository;
 import learn.sprb2g.recipe.repositories.RecipeRepository;
 import learn.sprb2g.recipe.repositories.UnitOfMeasureRepository;
-import learn.sprb2g.recipe.repositories.reactive.UnitOfMeasureReactiveRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -30,9 +28,6 @@ public class DataLoader implements CommandLineRunner {
     private final UnitOfMeasureRepository unitOfMeasureRepository;
     private final RecipeRepository recipeRepository;
 
-    @Autowired
-    UnitOfMeasureReactiveRepository reactiveRepository;
-
     public DataLoader(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository,
                       RecipeRepository recipeRepository) {
         this.categoryRepository = categoryRepository;
@@ -48,9 +43,6 @@ public class DataLoader implements CommandLineRunner {
             loadUnitsOfMeasure();
             recipeRepository.saveAll(createRecipes());
         }
-
-        log.error("#######");
-        log.error("count = {}", reactiveRepository.count().block().toString());
     }
 
     private void loadCategories(){

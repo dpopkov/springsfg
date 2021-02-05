@@ -1,0 +1,9 @@
+Assignments
+-----------
+
+### 1 - Create Reactive Repositories
+* Create Reactive Repository Implementations for Category and Recipe
+* Add count output for each to Bootstrap class
+* Add Integration Tests for reactive repository
+    * Add Document Object
+    * Then fetch all
