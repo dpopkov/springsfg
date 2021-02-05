@@ -2,6 +2,7 @@ package learn.sprb2g.recipe.controllers;
 
 import learn.sprb2g.recipe.commands.IngredientCommand;
 import learn.sprb2g.recipe.commands.RecipeCommand;
+import learn.sprb2g.recipe.commands.UnitOfMeasureCommand;
 import learn.sprb2g.recipe.services.IngredientService;
 import learn.sprb2g.recipe.services.RecipeService;
 import learn.sprb2g.recipe.services.UnitOfMeasureService;
@@ -14,8 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import java.util.HashSet;
+import reactor.core.publisher.Flux;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -73,7 +73,7 @@ class IngredientControllerTest {
         recipeCommand.setId(recipeId);
 
         when(recipeService.findCommandById(recipeId)).thenReturn(recipeCommand);
-        when(unitOfMeasureService.findAll()).thenReturn(new HashSet<>());
+        when(unitOfMeasureService.findAll()).thenReturn(Flux.just(new UnitOfMeasureCommand()));
 
         mockMvc.perform(get("/recipe/" + recipeId + "/ingredient/new"))
                 .andExpect(status().isOk())
@@ -89,7 +89,7 @@ class IngredientControllerTest {
         final String ingredientId = "2";
         when(ingredientService.findByRecipeIdAndIngredientId(recipeId, ingredientId))
                 .thenReturn(new IngredientCommand());
-        when(unitOfMeasureService.findAll()).thenReturn(new HashSet<>());
+        when(unitOfMeasureService.findAll()).thenReturn(Flux.just(new UnitOfMeasureCommand()));
 
         mockMvc.perform(get("/recipe/" + recipeId + "/ingredient/" + ingredientId + "/update"))
                 .andExpect(status().isOk())

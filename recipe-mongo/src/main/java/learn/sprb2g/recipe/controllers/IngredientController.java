@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Set;
+import java.util.List;
 
 @SuppressWarnings("SameReturnValue")
 @Slf4j
@@ -56,7 +56,7 @@ public class IngredientController {
         ingredient.setRecipeId(recipeCommand.getId());
         ingredient.setUnit(new UnitOfMeasureCommand());
         model.addAttribute("ingredient", ingredient);
-        Set<UnitOfMeasureCommand> uomAll = unitOfMeasureService.findAll();
+        List<UnitOfMeasureCommand> uomAll = unitOfMeasureService.findAll().collectList().block();
         model.addAttribute("uomAll", uomAll);
         return "recipe/ingredient/ingredientform";
     }
@@ -66,7 +66,7 @@ public class IngredientController {
         IngredientCommand ingredient = ingredientService.findByRecipeIdAndIngredientId(
                 recipeId, ingredientId);
         model.addAttribute("ingredient", ingredient);
-        Set<UnitOfMeasureCommand> uomAll = unitOfMeasureService.findAll();
+        List<UnitOfMeasureCommand> uomAll = unitOfMeasureService.findAll().collectList().block();
         model.addAttribute("uomAll", uomAll);
         return "recipe/ingredient/ingredientform";
     }
