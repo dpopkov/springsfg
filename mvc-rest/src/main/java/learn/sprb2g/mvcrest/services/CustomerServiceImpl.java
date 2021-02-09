@@ -2,6 +2,7 @@ package learn.sprb2g.mvcrest.services;
 
 import learn.sprb2g.mvcrest.api.v1.mapper.CustomerMapper;
 import learn.sprb2g.mvcrest.api.v1.model.CustomerDTO;
+import learn.sprb2g.mvcrest.domain.Customer;
 import learn.sprb2g.mvcrest.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+
+    public static final String API_URL_PREFIX = "/api/v1/customer/";
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
@@ -26,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .stream()
                 .map(customer -> {
                     CustomerDTO dto = customerMapper.customerToCustomerDTO(customer);
-                    dto.setCustomerUrl("/api/v1/customer/" + customer.getId());
+                    dto.setCustomerUrl(API_URL_PREFIX + customer.getId());
                     return dto;
                 }).collect(Collectors.toList());
     }
@@ -36,4 +39,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findById(id).map(customerMapper::customerToCustomerDTO);
     }
 
+    @Override
+    public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
+        Customer customer = customerMapper.customerDtoToCustomer(customerDTO);
+        Customer saved = customerRepository.save(customer);
+        CustomerDTO returnDto = customerMapper.customerToCustomerDTO(saved);
+        returnDto.setCustomerUrl(API_URL_PREFIX + saved.getId());
+        return returnDto;
+    }
 }

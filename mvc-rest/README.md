@@ -9,3 +9,4 @@ RESTFull Web Services with Spring MVC
 4. Add CategoryService.
 5. List Categories.
 6. Assignment: Add Customer entity, dto, repository, service, controller.
+7. Create a new Customer: update mapper, service, controller.
