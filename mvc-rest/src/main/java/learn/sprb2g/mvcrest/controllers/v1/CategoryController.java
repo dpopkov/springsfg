@@ -5,15 +5,11 @@ import learn.sprb2g.mvcrest.api.v1.model.CategoryListDTO;
 import learn.sprb2g.mvcrest.services.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping(CategoryController.BASE_URL)
 public class CategoryController {
 
@@ -26,9 +22,9 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<CategoryListDTO> getAllCategories() {
-        List<CategoryDTO> allCategories = categoryService.getAllCategories();
-        return new ResponseEntity<>(new CategoryListDTO(allCategories), HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public CategoryListDTO getAllCategories() {
+        return new CategoryListDTO(categoryService.getAllCategories());
     }
 
     @GetMapping("{categoryName}")

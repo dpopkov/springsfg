@@ -15,3 +15,4 @@ RESTFull Web Services with Spring MVC
 10. Delete Customer.
 11. Externalize API URL Values.
 12. Use ControllerAdvice annotation for Exception Handling.
+13. Use RestController annotation for controllers.
