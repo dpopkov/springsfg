@@ -27,7 +27,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
     private static final Long CUSTOMER_ID = 42L;
     private static final String FIRST_NAME = "Alice";
     private static final String LAST_NAME = "Abernathy";
-    private static final String CUSTOMER_URL = CustomerServiceImpl.API_URL_PREFIX + CUSTOMER_ID;
+    private static final String CUSTOMER_URL = CustomerController.BASE_URL + "/" + CUSTOMER_ID;
 
     @Mock
     CustomerService customerService;
@@ -46,7 +46,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
         List<CustomerDTO> customerDTOs = List.of(new CustomerDTO(), new CustomerDTO());
         when(customerService.getAllCustomers()).thenReturn(customerDTOs);
 
-        mockMvc.perform(get("/api/v1/customers/")
+        mockMvc.perform(get(CustomerController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -55,16 +55,15 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
     @Test
     void testGetCustomerById() throws Exception {
-        final Long customerId = 42L;
         CustomerDTO customer = new CustomerDTO();
-        customer.setId(customerId);
-        when(customerService.getCustomerById(customerId)).thenReturn(Optional.of(customer));
+        customer.setId(CUSTOMER_ID);
+        when(customerService.getCustomerById(CUSTOMER_ID)).thenReturn(Optional.of(customer));
 
-        mockMvc.perform(get("/api/v1/customers/" + customerId)
+        mockMvc.perform(get(CUSTOMER_URL)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", equalTo(customerId.intValue())));
+                .andExpect(jsonPath("$.id", equalTo(CUSTOMER_ID.intValue())));
     }
 
     @Test
@@ -80,7 +79,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
         when(customerService.createNewCustomer(any(CustomerDTO.class))).thenReturn(returnDto);
 
-        mockMvc.perform(post("/api/v1/customers/")
+        mockMvc.perform(post(CustomerController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer))
         )
@@ -103,7 +102,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
         when(customerService.saveCustomerByDTO(eq(CUSTOMER_ID), any(CustomerDTO.class))).thenReturn(returnDto);
 
-        mockMvc.perform(put("/api/v1/customers/" + CUSTOMER_ID)
+        mockMvc.perform(put(CUSTOMER_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer))
         )
@@ -127,7 +126,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
         when(customerService.patchCustomer(eq(CUSTOMER_ID), any(CustomerDTO.class))).thenReturn(returnDto);
 
-        mockMvc.perform(patch("/api/v1/customers/" + CUSTOMER_ID)
+        mockMvc.perform(patch(CUSTOMER_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer))
         )
@@ -140,7 +139,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
     @Test
     void testDeleteCustomer() throws Exception {
-        mockMvc.perform(delete("/api/v1/customers/" + CUSTOMER_ID))
+        mockMvc.perform(delete(CUSTOMER_URL))
                 .andExpect(status().isOk());
         verify(customerService).deleteCustomerById(CUSTOMER_ID);
     }

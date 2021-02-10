@@ -49,7 +49,7 @@ class CategoryControllerTest {
         List<CategoryDTO> categories = List.of(category1, category2);
         when(categoryService.getAllCategories()).thenReturn(categories);
 
-        mockMvc.perform(get("/api/v1/categories/")
+        mockMvc.perform(get(CategoryController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -62,7 +62,7 @@ class CategoryControllerTest {
         category.setId(ID_1);
         when(categoryService.getCategoryByName(NAME_1)).thenReturn(Optional.of(category));
 
-        mockMvc.perform(get("/api/v1/categories/" + NAME_1)
+        mockMvc.perform(get(CategoryController.BASE_URL + NAME_1)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
