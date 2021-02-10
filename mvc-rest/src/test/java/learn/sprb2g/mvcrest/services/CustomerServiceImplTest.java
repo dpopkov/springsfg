@@ -86,4 +86,10 @@ class CustomerServiceImplTest {
         assertEquals(FIRST_NAME, savedDto.getFirstname());
         assertEquals(CustomerServiceImpl.API_URL_PREFIX + CUSTOMER_ID, savedDto.getCustomerUrl());
     }
+
+    @Test
+    void testDeleteCustomerById() {
+        service.deleteCustomerById(CUSTOMER_ID);
+        verify(customerRepository).deleteById(CUSTOMER_ID);
+    }
 }

@@ -57,6 +57,11 @@ public class CustomerServiceImpl implements CustomerService {
         }).orElseThrow(() -> new RuntimeException("Customer not found by ID " + id));
     }
 
+    @Override
+    public void deleteCustomerById(Long id) {
+        customerRepository.deleteById(id);
+    }
+
     private void patchCustomerFromDTO(Customer customer, CustomerDTO customerDTO) {
         if (customerDTO.getFirstname() != null) {
             customer.setFirstname(customerDTO.getFirstname());

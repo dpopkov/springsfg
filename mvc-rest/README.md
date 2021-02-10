@@ -12,3 +12,4 @@ RESTFull Web Services with Spring MVC
 7. Create a new Customer: update mapper, service, controller.
 8. Update Customer with PUT: update service and controller.
 9. Update Customer with PATCH: update service and controller. Add Integration Tests.
+10. Delete Customer.
