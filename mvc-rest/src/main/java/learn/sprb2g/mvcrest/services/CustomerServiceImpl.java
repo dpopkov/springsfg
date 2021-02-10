@@ -50,15 +50,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO) {
+    public CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO) throws ResourceNotFoundException {
         return customerRepository.findById(id).map(customer -> {
             patchCustomerFromDTO(customer, customerDTO);
             return saveAndReturnDTO(customer);
-        }).orElseThrow(() -> new RuntimeException("Customer not found by ID " + id));
+        }).orElseThrow(() -> new ResourceNotFoundException("Customer not found by ID " + id));
     }
 
     @Override
-    public void deleteCustomerById(Long id) {
+    public void deleteCustomerById(Long id) throws ResourceNotFoundException {
+        if (!customerRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Customer not found by ID " + id);
+        }
         customerRepository.deleteById(id);
     }
 

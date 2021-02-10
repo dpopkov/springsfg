@@ -15,7 +15,19 @@ public interface CustomerService {
 
     CustomerDTO saveCustomerByDTO(long id, CustomerDTO customerDTO);
 
-    CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO);
+    /**
+     * Patches customer by the specified id.
+     * @param id id of the customer
+     * @param customerDTO DTO containing patching data
+     * @return DTO containing updated data
+     * @throws ResourceNotFoundException when the customer is not found by the ID
+     */
+    CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO) throws ResourceNotFoundException;
 
-    void deleteCustomerById(Long id);
+    /**
+     * Deletes customer by the specified id.
+     * @param id id of the customer
+     * @throws ResourceNotFoundException when the customer is not found by the ID
+     */
+    void deleteCustomerById(Long id) throws ResourceNotFoundException;
 }

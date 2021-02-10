@@ -68,4 +68,15 @@ class CategoryControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(NAME_1)));
     }
+
+    @Test
+    void testGetByNameNotFound() throws Exception {
+        when(categoryService.getCategoryByName(NAME_1)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get(CategoryController.BASE_URL + NAME_1)
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isNotFound());
+        verify(categoryService).getCategoryByName(anyString());
+    }
 }

@@ -89,7 +89,16 @@ class CustomerServiceImplTest {
 
     @Test
     void testDeleteCustomerById() {
+        when(customerRepository.existsById(CUSTOMER_ID)).thenReturn(true);
+
         service.deleteCustomerById(CUSTOMER_ID);
         verify(customerRepository).deleteById(CUSTOMER_ID);
+    }
+
+    @Test
+    void testDeleteCustomerByIdNotFound() {
+        when(customerRepository.existsById(CUSTOMER_ID)).thenReturn(false);
+
+        assertThrows(ResourceNotFoundException.class, () -> service.deleteCustomerById(CUSTOMER_ID));
     }
 }

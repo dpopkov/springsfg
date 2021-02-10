@@ -14,3 +14,4 @@ RESTFull Web Services with Spring MVC
 9. Update Customer with PATCH: update service and controller. Add Integration Tests.
 10. Delete Customer.
 11. Externalize API URL Values.
+12. Use ControllerAdvice annotation for Exception Handling.

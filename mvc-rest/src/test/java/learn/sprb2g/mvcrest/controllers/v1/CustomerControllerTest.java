@@ -2,7 +2,7 @@ package learn.sprb2g.mvcrest.controllers.v1;
 
 import learn.sprb2g.mvcrest.api.v1.model.CustomerDTO;
 import learn.sprb2g.mvcrest.services.CustomerService;
-import learn.sprb2g.mvcrest.services.CustomerServiceImpl;
+import learn.sprb2g.mvcrest.services.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,7 +38,9 @@ class CustomerControllerTest extends AbstractRestControllerTest {
 
     @BeforeEach
     void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
     }
 
     @Test
@@ -138,9 +140,34 @@ class CustomerControllerTest extends AbstractRestControllerTest {
     }
 
     @Test
+    void testPatchCustomerNotFound() throws Exception {
+        CustomerDTO customer = new CustomerDTO();
+        String firstnameChanged = FIRST_NAME + " changed";
+        customer.setFirstname(firstnameChanged);
+
+        when(customerService.patchCustomer(eq(CUSTOMER_ID), any(CustomerDTO.class)))
+                .thenThrow(new ResourceNotFoundException("Customer not found by ID " + CUSTOMER_ID));
+
+        mockMvc.perform(patch(CUSTOMER_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(customer))
+        )
+                .andExpect(status().isNotFound());
+        verify(customerService).patchCustomer(eq(CUSTOMER_ID), any(CustomerDTO.class));
+    }
+
+    @Test
     void testDeleteCustomer() throws Exception {
         mockMvc.perform(delete(CUSTOMER_URL))
                 .andExpect(status().isOk());
+        verify(customerService).deleteCustomerById(CUSTOMER_ID);
+    }
+
+    @Test
+    void testDeleteCustomerNotFound() throws Exception {
+        doThrow(ResourceNotFoundException.class).when(customerService).deleteCustomerById(CUSTOMER_ID);
+        mockMvc.perform(delete(CUSTOMER_URL))
+                .andExpect(status().isNotFound());
         verify(customerService).deleteCustomerById(CUSTOMER_ID);
     }
 }
