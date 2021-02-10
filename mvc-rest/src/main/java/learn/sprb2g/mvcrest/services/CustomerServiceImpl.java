@@ -27,20 +27,13 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDTO> getAllCustomers() {
         return customerRepository.findAll()
                 .stream()
-                .map(customer -> {
-                    CustomerDTO dto = customerMapper.customerToCustomerDTO(customer);
-                    dto.setCustomerUrl(API_URL_PREFIX + customer.getId());
-                    return dto;
-                }).collect(Collectors.toList());
+                .map(this::mapToDtoAndSetUrl)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Optional<CustomerDTO> getCustomerById(Long id) {
-        return customerRepository.findById(id).map(customer -> {
-            CustomerDTO dto = customerMapper.customerToCustomerDTO(customer);
-            dto.setCustomerUrl(API_URL_PREFIX + customer.getId());
-            return dto;
-        });
+        return customerRepository.findById(id).map(this::mapToDtoAndSetUrl);
     }
 
     @Override
@@ -59,19 +52,26 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO) {
         return customerRepository.findById(id).map(customer -> {
-            if (customerDTO.getFirstname() != null) {
-                customer.setFirstname(customerDTO.getFirstname());
-            }
-            if (customerDTO.getLastname() != null) {
-                customer.setLastname(customerDTO.getLastname());
-            }
-            Customer saved = customerRepository.save(customer);
-            return customerMapper.customerToCustomerDTO(saved);
+            patchCustomerFromDTO(customer, customerDTO);
+            return saveAndReturnDTO(customer);
         }).orElseThrow(() -> new RuntimeException("Customer not found by ID " + id));
+    }
+
+    private void patchCustomerFromDTO(Customer customer, CustomerDTO customerDTO) {
+        if (customerDTO.getFirstname() != null) {
+            customer.setFirstname(customerDTO.getFirstname());
+        }
+        if (customerDTO.getLastname() != null) {
+            customer.setLastname(customerDTO.getLastname());
+        }
     }
 
     private CustomerDTO saveAndReturnDTO(Customer customer) {
         Customer saved = customerRepository.save(customer);
+        return mapToDtoAndSetUrl(saved);
+    }
+
+    private CustomerDTO mapToDtoAndSetUrl(Customer saved) {
         CustomerDTO returnDto = customerMapper.customerToCustomerDTO(saved);
         returnDto.setCustomerUrl(API_URL_PREFIX + saved.getId());
         return returnDto;
