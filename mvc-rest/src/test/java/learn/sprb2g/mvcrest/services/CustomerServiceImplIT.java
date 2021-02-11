@@ -6,6 +6,7 @@ import learn.sprb2g.mvcrest.bootstrap.BootstrapData;
 import learn.sprb2g.mvcrest.domain.Customer;
 import learn.sprb2g.mvcrest.repositories.CategoryRepository;
 import learn.sprb2g.mvcrest.repositories.CustomerRepository;
+import learn.sprb2g.mvcrest.repositories.VendorRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ class CustomerServiceImplIT {
     CustomerRepository customerRepository;
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    VendorRepository vendorRepository;
 
     private final CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
@@ -34,7 +37,7 @@ class CustomerServiceImplIT {
 
     @BeforeEach
     void setup() {
-        BootstrapData bootstrapData = new BootstrapData(categoryRepository, customerRepository);
+        BootstrapData bootstrapData = new BootstrapData(categoryRepository, customerRepository, vendorRepository);
         bootstrapData.run();
         service = new CustomerServiceImpl(customerRepository, customerMapper);
     }
