@@ -17,3 +17,4 @@ RESTFull Web Services with Spring MVC
 12. Use ControllerAdvice annotation for Exception Handling.
 13. Use RestController annotation for controllers.
 14. Assignment: Create Vendors API.
+15. Configure Swagger.
