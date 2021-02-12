@@ -16,7 +16,8 @@
     <properties>
         <java.version>11</java.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-        <swagger.version>3.0.0</swagger.version>
+        <!-- <swagger.version>3.0.0</swagger.version> -->  <!-- Have problem 404 with 2.10.5 and 3.0.0 -->
+        <swagger.version>2.9.2</swagger.version>
     </properties>
     <dependencies>
         <dependency>
