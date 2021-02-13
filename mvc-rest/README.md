@@ -19,3 +19,4 @@ RESTFull Web Services with Spring MVC
 14. Assignment: Create Vendors API.
 15. Configure Swagger.
 16. Use Swagger UI.
+17. Customize Swagger with Metadata.
