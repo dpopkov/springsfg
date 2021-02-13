@@ -20,3 +20,4 @@ RESTFull Web Services with Spring MVC
 15. Configure Swagger.
 16. Use Swagger UI.
 17. Customize Swagger with Metadata.
+18. Customize endpoint documentation.
