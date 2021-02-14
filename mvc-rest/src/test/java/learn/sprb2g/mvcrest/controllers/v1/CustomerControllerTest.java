@@ -49,6 +49,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
         when(customerService.getAllCustomers()).thenReturn(customerDTOs);
 
         mockMvc.perform(get(CustomerController.BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -62,6 +63,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
         when(customerService.getCustomerById(CUSTOMER_ID)).thenReturn(Optional.of(customer));
 
         mockMvc.perform(get(CUSTOMER_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -82,6 +84,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
         when(customerService.createNewCustomer(any(CustomerDTO.class))).thenReturn(returnDto);
 
         mockMvc.perform(post(CustomerController.BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer))
         )
@@ -105,6 +108,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
         when(customerService.saveCustomerByDTO(eq(CUSTOMER_ID), any(CustomerDTO.class))).thenReturn(returnDto);
 
         mockMvc.perform(put(CUSTOMER_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer))
         )
@@ -129,6 +133,7 @@ class CustomerControllerTest extends AbstractRestControllerTest {
         when(customerService.patchCustomer(eq(CUSTOMER_ID), any(CustomerDTO.class))).thenReturn(returnDto);
 
         mockMvc.perform(patch(CUSTOMER_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(customer))
         )

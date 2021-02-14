@@ -21,3 +21,4 @@ RESTFull Web Services with Spring MVC
 16. Use Swagger UI.
 17. Customize Swagger with Metadata.
 18. Customize endpoint documentation.
+19. Maven dependencies to render XML with Spring MVC (then just use Accept header 'application/xml', and you have it).

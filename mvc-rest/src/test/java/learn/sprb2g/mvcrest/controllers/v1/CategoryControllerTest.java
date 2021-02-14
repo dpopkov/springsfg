@@ -50,6 +50,7 @@ class CategoryControllerTest {
         when(categoryService.getAllCategories()).thenReturn(categories);
 
         mockMvc.perform(get(CategoryController.BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -63,6 +64,7 @@ class CategoryControllerTest {
         when(categoryService.getCategoryByName(NAME_1)).thenReturn(Optional.of(category));
 
         mockMvc.perform(get(CategoryController.BASE_URL + NAME_1)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isOk())
@@ -74,6 +76,7 @@ class CategoryControllerTest {
         when(categoryService.getCategoryByName(NAME_1)).thenReturn(Optional.empty());
 
         mockMvc.perform(get(CategoryController.BASE_URL + NAME_1)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
         )
                 .andExpect(status().isNotFound());

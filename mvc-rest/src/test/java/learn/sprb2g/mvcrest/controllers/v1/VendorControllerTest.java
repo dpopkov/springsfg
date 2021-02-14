@@ -47,7 +47,9 @@ class VendorControllerTest extends AbstractRestControllerTest {
     void testListAllVendors() throws Exception {
         when(vendorService.getAllVendors()).thenReturn(List.of(new VendorDTO(), new VendorDTO()));
 
-        mockMvc.perform(get(BASE_URL))
+        mockMvc.perform(get(BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
+        )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.vendors", hasSize(2)));
     }
@@ -58,7 +60,9 @@ class VendorControllerTest extends AbstractRestControllerTest {
         vendor.setName(VENDOR_NAME);
         when(vendorService.getVendorById(VENDOR_ID)).thenReturn(Optional.of(vendor));
 
-        mockMvc.perform(get(VENDOR_URL))
+        mockMvc.perform(get(VENDOR_URL)
+                .accept(MediaType.APPLICATION_JSON)
+        )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(VENDOR_NAME)));
     }
@@ -75,6 +79,7 @@ class VendorControllerTest extends AbstractRestControllerTest {
         when(vendorService.createNewVendor(ArgumentMatchers.any(VendorDTO.class))).thenReturn(createdDto);
 
         mockMvc.perform(post(BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(inputDto))
         )

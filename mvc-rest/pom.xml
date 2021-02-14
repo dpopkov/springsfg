@@ -18,6 +18,7 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <!-- <swagger.version>3.0.0</swagger.version> -->  <!-- Have problem 404 with 2.10.5 and 3.0.0 -->
         <swagger.version>2.9.2</swagger.version>
+        <woodstox.version>4.1.2_1</woodstox.version>
     </properties>
     <dependencies>
         <dependency>
@@ -28,7 +29,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.bundles</groupId>
+            <artifactId>woodstox-core-asl</artifactId>
+            <version>${woodstox.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
