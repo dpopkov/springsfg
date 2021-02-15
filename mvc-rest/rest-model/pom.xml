@@ -13,4 +13,34 @@
     <packaging>jar</packaging>
     <name>rest-model</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <packageName>learn.sprb2g.mvcrest.model</packageName>
+                    <sources>
+                        <source>src/main/resources/xsd</source>
+                    </sources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

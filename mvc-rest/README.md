@@ -23,3 +23,4 @@ RESTFull Web Services with Spring MVC
 18. Customize endpoint documentation.
 19. Maven dependencies to render XML with Spring MVC (then just use Accept header 'application/xml', and you have it).
 20. Refactor project to multi-module.
+21. Use JAXB to generate Java classes.
